@@ -52,7 +52,7 @@ These routes should be protected using appropriate middleware that checks for au
 - Follow RESTful API principles for structured and predictable routes.
 - Version your API using prefixes like `/api`.
 
-
+#
 
 # Week 1: Frontend Routes and UX Requirements
 
