@@ -9,6 +9,7 @@ A search bar function.
 Users can auction their items. 
 
 
+
 # eBay Clone Development Plan
 
 ## Overview
