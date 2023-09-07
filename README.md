@@ -8,6 +8,11 @@ A search bar function.
 300 approx user scale. 
 Users can auction their items. 
 
+# WHEN YOU PULL REMEMBER TO:
+## `cd frontend`, `npm install`, then
+### `cd ..`, `cd backend`, `npm install`
+#### sorry, i didn't make it nice so you only had to npm install once. :P
+
 
 
 # eBay Clone Development Plan
