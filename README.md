@@ -15,7 +15,7 @@ Users can auction their items.
 
 
 
-# eBay Clone Development Plan
+# Development Plan
 
 ## Overview
 The MVP focuses on essential functionalities such as item listing, viewing, buying, and basic auction functionalities.
