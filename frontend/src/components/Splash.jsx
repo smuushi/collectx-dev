@@ -1,12 +1,9 @@
-
-
-
 const Splash = () => {
 
 
     return (
         <>
-
+            <h3>hello from splash</h3>
         </>
     )
 }
