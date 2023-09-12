@@ -7,7 +7,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 
 import Splash from './components/Splash'
 import SignUp from './components/SignUp'
-import Login from './Login'
+import Login from './components/Login'
 
 
 function App() {
