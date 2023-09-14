@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { signIn } from '../redux_store/actions/authActions';
+import { signIn } from '../../redux_store/actions/authActions';
 import { useNavigate } from 'react-router-dom';
 
 

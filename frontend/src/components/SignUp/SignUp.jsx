@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { signIn, createAccount } from '../redux_store/actions/authActions';
+import { signIn, createAccount } from '../../redux_store/actions/authActions';
 import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
