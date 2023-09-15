@@ -5,9 +5,9 @@ import './App.css'
 
 import { Route, Routes, useLocation } from 'react-router-dom'
 
-import Splash from './components/Splash'
-import SignUp from './components/SignUp'
-import Login from './components/Login'
+import Splash from './components/Splash/Splash'
+import SignUp from './components/SignUp/SignUp'
+import Login from './components/Login/Login'
 
 
 function App() {

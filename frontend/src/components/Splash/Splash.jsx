@@ -1,9 +1,10 @@
+import NavBar from "../Navigation/NavBar";
 const Splash = () => {
 
 
     return (
         <>
-            
+            <NavBar/>
             <div>
                 splash
             </div>
