@@ -1,0 +1,70 @@
+$color-blue : rgba(148,172,227,255);
+$color-wechat: #1AAD19; //Wechat color
+$color-ins: #E4405F; //Ins color
+$color-pink: #FF69B4; //Pink color
+$color-UIBackground: $color-blue;
+//-------Font family
+$font-family : 'Courier New', Courier, monospace;
+
+
+input{
+    width: 100%;
+    height: 3vh;
+    background-color: white;
+    padding: 20px 10px;
+    
+    border-radius: 15px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    transition: all 0.25s;
+    &:focus, &:active{
+        outline:none;
+        border: 1px solid $color-pink;
+    }
+}
+
+
+.shoppingBtn{
+    position: relative;
+    padding: 10px 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-sizing: border-box;
+    font-size: 1.2em;
+    cursor:pointer;
+    transition: all 0.5s;
+
+    &:after,&:before{
+        content:" ";
+        width:10px;
+        height:10px;
+        position:absolute;
+        border :0px solid #fff;
+        transition:all 0.5s;
+    }
+
+    &:after{
+        top:-2px;
+        left:-2px;
+        border-top:3px solid $color-UIBackground;
+        border-left:3px solid $color-UIBackground;
+    }
+        
+    &:before{
+        bottom:-2px;
+        right:-2px;
+        border-bottom:3px solid $color-UIBackground;
+        border-right:3px solid $color-UIBackground;
+    }
+
+    &:hover{
+        border-radius: 0;
+        &:before,&:after{
+            width:101%;
+            height:101%;
+          // border-color:white;
+        }
+    }
+    
+}

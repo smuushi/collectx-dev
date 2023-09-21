@@ -14,7 +14,7 @@ const Login = () => {
     const handleSignIn = () => {
         const data = dispatch(signIn(username, password));
         if (data) {
-          navigate('/profile')
+            navigate('/profile')
         }
     };
 
@@ -22,7 +22,7 @@ const Login = () => {
         <>
             <div className="loginPage">
                 <div className="loginLeft">
-                   
+                
                 </div>
                 <div className="loginRight">
                     <p>Login</p>
