@@ -1,5 +1,5 @@
-export const createAccount = (username, password, email) => async (dispatch) => {
-  let sample = JSON.stringify({ username: username, password: password, email: [email] })
+export const createAccount = (userInfo) => async (dispatch) => {
+  //let sample = JSON.stringify({ username: username, password: password, email: [email] })
   // debugger
     try {                         
       const response = await fetch('placeholder url...', {
@@ -7,7 +7,7 @@ export const createAccount = (username, password, email) => async (dispatch) => 
         headers: {
           'Content-Type': 'application/json',
         },
-        body: sample,
+        body: userInfo,
       });
       // debugger
       const data = await response.json();
@@ -30,15 +30,16 @@ export const createAccount = (username, password, email) => async (dispatch) => 
   };
 
 
-export const signIn = (username, password) => async (dispatch) => {
-  let sample = JSON.stringify({ username: username, password: password })
+export const signIn = (userInfo) => async (dispatch) => {
+  //let sample = JSON.stringify({ username: username, password: password })
+  
   try {
       const response = await fetch('placeholder url...', {     
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: sample,
+        body: userInfo,
       });
 
       const data = await response.json();

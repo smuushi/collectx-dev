@@ -1,4 +1,6 @@
 import './NavBar.css'
+import { NavLink } from 'react-router-dom'
+
 const NavBar = () => {
     return (
         <>
@@ -18,9 +20,11 @@ const NavBar = () => {
                     </div>
                 </div>
 
-                <div>
-                    sign in 
-                </div>
+                <NavLink to='/login'>
+                    <div className='text-xl font-bold underline'>
+                        login
+                    </div>
+                </NavLink>
 
             </div>
         </>

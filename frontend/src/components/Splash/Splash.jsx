@@ -1,10 +1,8 @@
-import NavBar from "../Navigation/NavBar";
-const Splash = () => {
 
+const Splash = () => {
 
     return (
         <>
-            <NavBar/>
             <div>
                 splash
             </div>
