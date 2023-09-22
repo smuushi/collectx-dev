@@ -16,7 +16,7 @@ const Login = ({setIsLogin}) => {
 
 
   const [userInfo, setUserInfo] = useState({
-    username: '',
+    email: '',
     password: ''
   });
 
@@ -29,9 +29,13 @@ const Login = ({setIsLogin}) => {
     });
   };
 
-  const handleSignIn = () => {
-    
-    const data = dispatch(signIn(userInfo));
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(signIn(userInfo));
+
+    // let success = await data;
+
+    debugger
     if (data) {
         navigate('/profile')
     }
@@ -65,8 +69,8 @@ const Login = ({setIsLogin}) => {
       <form className='h-full w-1/2 flex justify-center items-center'>
         <Space direction="vertical" size="large">
           <div className=''>
-            <label className='font-mainPageFont tracking-wider'>Username</label>
-            <input name='username' className='px-5' type="text" onChange={onChange}/>
+            <label className='font-mainPageFont tracking-wider'>Email</label>
+            <input name='email' className='px-5' type="text" onChange={onChange}/>
             
           </div>
           <div>

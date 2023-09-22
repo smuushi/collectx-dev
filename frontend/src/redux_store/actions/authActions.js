@@ -34,36 +34,49 @@ export const signIn = (userInfo) => async (dispatch) => {
   //let sample = JSON.stringify({ username: username, password: password })
   
   try {
-      const response = await fetch('placeholder url...', {     
+    debugger
+
+      const response = await fetch('http://localhost:3000/v1/auth/login', {     
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: userInfo,
+        body: JSON.stringify(userInfo),
       });
 
-      const data = await response.json();
+      if (response.ok) {
+        const data = await response.json();
+
+      } else {
+        // debugger
+        throw Error
+      }
 
       if (response.status === 200) {
       // Save the JWT token in localStorage
-      localStorage.setItem('token', data.token);
+      localStorage.setItem('accessToken', data.tokens.access.token);
+      localStorage.setItem('refreshToken', data.tokens.refresh.token);
+
 
       dispatch({
           type: 'SIGN_IN_SUCCESS',
           payload: data.message,
-          user: data.currentUser,
+          user: data.user.id,
       });
       return data;
 
       } else {
-      throw new Error(data.message);
+      // throw new Error(data.message);
       }
   } catch (error) {
+    debugger
       dispatch({
       type: 'SIGN_IN_FAILURE',
       payload: error.message,
       });
+      return null
   }
+
 };
 
 
