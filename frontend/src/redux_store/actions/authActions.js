@@ -46,7 +46,11 @@ export const signIn = (userInfo) => async (dispatch) => {
 
       if (response.ok) {
         const data = await response.json();
-
+        debugger
+        // WORK TO BE DONE HERE
+        // DATA NEEDS TO BE PASSED TO REDUX STORE AND UPDATED.. 
+        // AND THEN REDIRECT TO HOME PAGE
+        // AND THEN HOME PAGE NEEDS TO REFLECT SIGN IN STATUS. yay 
       } else {
         // debugger
         throw Error
