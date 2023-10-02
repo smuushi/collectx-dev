@@ -4,17 +4,23 @@
 
 During the first week, the focus will be on setting up the project and implementing user authentication and profiles. The following API URL routes are suggested to be developed in this sprint:
 
-## User Authentication
+#### User Authentication:
 
-- `POST /api/auth/google`
-  - **Description**: Endpoint to handle Google authentication using Google's OAuth2.0.
+- `POST /api/auth/register`
+  - **Description**: Endpoint to handle standard user registration.
+  - **Request**: JSON containing user registration details (e.g., username, password).
+  - **Response**: JSON containing user data and a token.
+
+- `POST /api/auth/login`
+  - **Description**: Endpoint to handle user login.
+  - **Request**: JSON containing login details (e.g., username, password).
   - **Response**: JSON containing user data and a token.
 
 - `GET /api/auth/logout`
   - **Description**: Endpoint to handle user logout and clear the session/token.
   - **Response**: JSON message indicating successful logout.
 
-## User Profiles
+#### User Profiles:
 
 - `GET /api/users/me`
   - **Description**: Endpoint to get the authenticated user's profile information.
@@ -25,9 +31,7 @@ During the first week, the focus will be on setting up the project and implement
   - **Request**: JSON containing new user details.
   - **Response**: JSON containing updated user details.
 
-- `GET /api/users/:id` *(optional)*
-  - **Description**: Endpoint to get a specific user's details based on user ID. Useful for admin functionalities to view user profiles.
-  - **Response**: JSON containing the specified user's details.
+
 
 ## Admin Routes (optional for the first week, but good to consider)
 
