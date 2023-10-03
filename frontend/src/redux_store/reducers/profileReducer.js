@@ -1,5 +1,6 @@
+export const storedProfile = localStorage.getItem('userProfile');
 const initialState = {
-    profile: null,
+    profile: storedProfile ? JSON.parse(storedProfile) : null
   };
 
 const profileReducer = (state = initialState, action) => {

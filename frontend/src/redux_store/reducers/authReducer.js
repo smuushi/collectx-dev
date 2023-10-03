@@ -1,5 +1,6 @@
+import { storedProfile } from "./profileReducer";
 const initialState = {
-    isLoggedIn: false,
+    isLoggedIn: storedProfile ? true : false,
     message: '',
     currentUser: null,
   };
