@@ -2,7 +2,7 @@ export const createAccount = (userInfo) => async (dispatch) => {
   //let sample = JSON.stringify({ username: username, password: password, email: [email] })
   // debugger
     try {                         
-      const response = await fetch('placeholder url...', {
+      const response = await fetch('/v1/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -44,33 +44,40 @@ export const signIn = (userInfo) => async (dispatch) => {
         body: JSON.stringify(userInfo),
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        debugger
-        // WORK TO BE DONE HERE
-        // DATA NEEDS TO BE PASSED TO REDUX STORE AND UPDATED.. 
-        // AND THEN REDIRECT TO HOME PAGE
-        // AND THEN HOME PAGE NEEDS TO REFLECT SIGN IN STATUS. yay 
-      } else {
-        // debugger
-        throw Error
-      }
-
+      // if (response.ok) {
+      //   debugger
+      //   // WORK TO BE DONE HERE
+      //   // DATA NEEDS TO BE PASSED TO REDUX STORE AND UPDATED.. 
+      //   // AND THEN REDIRECT TO HOME PAGE
+      //   // AND THEN HOME PAGE NEEDS TO REFLECT SIGN IN STATUS. yay 
+      // } else {
+      //   // debugger
+      //   throw Error
+      // }
+      
       if (response.status === 200) {
+        const data = await response.json();
       // Save the JWT token in localStorage
       localStorage.setItem('accessToken', data.tokens.access.token);
       localStorage.setItem('refreshToken', data.tokens.refresh.token);
 
+      localStorage.setItem('userProfile', JSON.stringify(data.user));
 
       dispatch({
           type: 'SIGN_IN_SUCCESS',
           payload: data.message,
           user: data.user.id,
       });
+
+      dispatch({
+        type: 'GET_PROFILE',
+        payload: data.user
+      })
+
       return data;
 
       } else {
-      // throw new Error(data.message);
+      throw new Error(data.message);
       }
   } catch (error) {
     debugger

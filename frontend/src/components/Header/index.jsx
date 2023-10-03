@@ -3,6 +3,7 @@ import { NavLink,useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import { Navigation } from './../../constants';
+import { useSelector } from 'react-redux';
 
 const MobileHeader = () => {
   return (
@@ -10,19 +11,14 @@ const MobileHeader = () => {
   )
 }
 
-// const NavBar = () => {
-//   return (
-//     <>
-      
-//     </>
-
 
 const DesktopHeader = () => {
   const location = useLocation();
   const path = location.pathname;
   const [active, setActive] = React.useState(path);
   const [scrolled, setScrolled] = React.useState(false);
-  const isAuthenticated = false; //TODO: change to true when auth is implemented
+  const isAuthenticated = useSelector(state => state.auth.isLoggedIn); //TODO: change to true when auth is implemented
+  // debugger
   React.useEffect(() => {
     setActive(path); // Update active path when path changes
 
@@ -76,7 +72,7 @@ const DesktopHeader = () => {
 
             {isAuthenticated ? 
               <div className="w-36 relative justify-self-start self-start">
-                  <UserNav /> 
+                  {/* <UserNav />  */}
               </div>
               : 
               <NavLink
