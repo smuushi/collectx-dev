@@ -14,14 +14,12 @@ const Register = ({setIsLogin}) => {
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: '',
-    ConfirmPassword:'',
     email: '',
   });
 
   const [errorMessage, setErrorMessage] = useState({
     username: '',
     password: '',
-    ConfirmPassword:'',
     email: '',
   })
   
@@ -36,7 +34,8 @@ const Register = ({setIsLogin}) => {
     });
   };
 
-  const handleCreateAccount = () => {
+  const handleCreateAccount = (e) => {
+    e.preventDefault()
     dispatch(createAccount(userInfo));
   };
 
@@ -65,11 +64,11 @@ const Register = ({setIsLogin}) => {
             <input className='px-5' name='password' type="password" onChange={onChange}/>
             {errorMessage.password && <p className='text-red-500'>{errorMessage.password}</p>}
           </div>
-          <div>
+          {/* <div>
             <label className='tracking-wider'>Confirm Password</label>
             <input className='px-5' name='ConfirmPassword' type="password" onChange={onChange}/>
             {errorMessage.ConfirmPassword && <p className='text-red-500'>{errorMessage.ConfirmPassword}</p>}  
-          </div>
+          </div> */}
           <div>
             <label className='tracking-wider'>Contact Email</label>
             <input className='px-5' name='email' type="email" onChange={onChange}/>

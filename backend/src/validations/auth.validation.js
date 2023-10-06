@@ -49,6 +49,13 @@ const verifyEmail = {
   }),
 };
 
+const verifyToken = {
+  headers: Joi.object({
+    authorization: Joi.string().required().label('Authorization Header'),
+  }).unknown(),  // Allows for other headers alongside "authorization"
+};
+
+
 module.exports = {
   register,
   login,
@@ -57,4 +64,5 @@ module.exports = {
   forgotPassword,
   resetPassword,
   verifyEmail,
+  verifyToken
 };

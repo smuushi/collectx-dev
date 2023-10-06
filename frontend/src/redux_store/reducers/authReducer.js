@@ -1,6 +1,6 @@
-import { storedProfile } from "./profileReducer";
+
 const initialState = {
-    isLoggedIn: storedProfile ? true : false,
+    isLoggedIn: false,
     message: '',
     currentUser: null,
   };
@@ -30,6 +30,13 @@ switch (action.type) {
         ...state,
         message: action.payload,
     };
+    case 'AUTHENTICATION_VALID':
+        // debugger
+    return {
+        isLoggedIn: true,
+        message: '',
+        currentUser: action.payload
+    }
     default:
     return state;
 }

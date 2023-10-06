@@ -5,14 +5,20 @@ import { useSelector } from 'react-redux';
 const MainPage = () => {
 
   let authStatus = useSelector(state => state.auth)
+  let allUsers = useSelector(state => state.users)
 
-  
+  // debugger
+  let currentUser = allUsers[authStatus.currentUser]
 
   return (
     <>
-      <div>MainPage</div>
+    <div>MainPage</div>
 
-      {authStatus.isLoggedIn? <h2>Congrats you are signed in</h2> : <h1>Not Logged In</h1>}
+    {authStatus.isLoggedIn? 
+      <h2>Congrats {currentUser.username} is signed in</h2> 
+      : 
+      <h1>Not Logged In</h1>
+    }
     </>
 
   )

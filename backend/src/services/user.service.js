@@ -24,6 +24,7 @@ const createUser = async (userBody) => {
  * @returns {Promise<QueryResult>}
  */
 const queryUsers = async (filter, options) => {
+  console.log(options)
   const users = await User.paginate(filter, options);
   return users;
 };

@@ -2,12 +2,12 @@ export const createAccount = (userInfo) => async (dispatch) => {
   //let sample = JSON.stringify({ username: username, password: password, email: [email] })
   // debugger
     try {                         
-      const response = await fetch('/v1/auth/register', {
+      const response = await fetch('http://localhost:3000/v1/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: userInfo,
+        body: JSON.stringify(userInfo),
       });
       // debugger
       const data = await response.json();
@@ -34,7 +34,7 @@ export const signIn = (userInfo) => async (dispatch) => {
   //let sample = JSON.stringify({ username: username, password: password })
   
   try {
-    debugger
+    // debugger
 
       const response = await fetch('http://localhost:3000/v1/auth/login', {     
         method: 'POST',
@@ -44,24 +44,11 @@ export const signIn = (userInfo) => async (dispatch) => {
         body: JSON.stringify(userInfo),
       });
 
-      // if (response.ok) {
-      //   debugger
-      //   // WORK TO BE DONE HERE
-      //   // DATA NEEDS TO BE PASSED TO REDUX STORE AND UPDATED.. 
-      //   // AND THEN REDIRECT TO HOME PAGE
-      //   // AND THEN HOME PAGE NEEDS TO REFLECT SIGN IN STATUS. yay 
-      // } else {
-      //   // debugger
-      //   throw Error
-      // }
-      
       if (response.status === 200) {
         const data = await response.json();
       // Save the JWT token in localStorage
       localStorage.setItem('accessToken', data.tokens.access.token);
       localStorage.setItem('refreshToken', data.tokens.refresh.token);
-
-      localStorage.setItem('userProfile', JSON.stringify(data.user));
 
       dispatch({
           type: 'SIGN_IN_SUCCESS',
@@ -91,3 +78,33 @@ export const signIn = (userInfo) => async (dispatch) => {
 };
 
 
+export const checkAuthentication = () => async (dispatch) => {
+  try {
+    const response = await fetch('http://localhost:3000/v1/auth/verifyToken', {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    });
+
+    if (response.ok) {
+      // Token is still valid
+      const data = await response.json();
+      // debugger
+      dispatch({
+        type: 'AUTHENTICATION_VALID',
+        payload: data.userId
+      });
+    } else {
+      // Token might be expired or invalid
+      throw new Error('Token is invalid or expired');
+    }
+  } catch (error) {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('userProfile');
+    
+    dispatch({
+      type: 'AUTHENTICATION_ERROR'
+    });
+  }
+};
