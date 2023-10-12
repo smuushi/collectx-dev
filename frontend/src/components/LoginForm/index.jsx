@@ -16,7 +16,7 @@ const Login = ({setIsLogin}) => {
 
 
   const [userInfo, setUserInfo] = useState({
-    username: '',
+    email: '',
     password: ''
   });
 
@@ -29,9 +29,13 @@ const Login = ({setIsLogin}) => {
     });
   };
 
-  const handleSignIn = () => {
-    
-    const data = dispatch(signIn(userInfo));
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(signIn(userInfo));
+
+    // let success = await data;
+
+    debugger
     if (data) {
         navigate('/profile')
     }
@@ -39,8 +43,8 @@ const Login = ({setIsLogin}) => {
 
   return (
     <div className='w-full h-full flex items-center gap-5'>
-      <div className='w-1/2 h-full flex flex-col justify-around border border-1'>
-        <div className='w-full px-12 flex flex-col '>
+      <div className='sm:flex hidden w-1/2 h-full flex-col justify-around border border-1'>
+        <div className=' w-full px-12 flex flex-col gap-5'>
             <h1 className='text-center text-2xl font-bold tracking-widest'>Hello Friend !</h1>
             <div className='text-center text-md'>
               <p>Hello new friend!</p>
@@ -62,12 +66,15 @@ const Login = ({setIsLogin}) => {
         </div>
 
       </div>
-      <form className='h-full w-1/2 flex justify-center items-center'>
+      <form className='h-full w-full sm:w-1/2 flex flex-col  justify-center gap-12 items-center'>
+        <div className=''>
+          <h1 className='text-center text-2xl font-bold tracking-widest'>Welcome Back !</h1>
+        </div>
         <Space direction="vertical" size="large">
+          
           <div className=''>
-            <label className='font-mainPageFont tracking-wider'>Username</label>
-            <input name='username' className='px-5' type="text" onChange={onChange}/>
-            
+            <label className='font-mainPageFont tracking-wider'>Email</label>
+            <input name='email' className='px-5' type="text" onChange={onChange}/>
           </div>
           <div>
             <label className='tracking-wider'>Password</label>
@@ -75,6 +82,11 @@ const Login = ({setIsLogin}) => {
           </div>
           <div>
             {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
+          </div>
+          <div className='flex sm:hidden'>
+            <p className='text-sm'>
+              Dont have account? <span className='text-[#E4405F] cursor-pointer underline' onClick={() => {setIsLogin(false)}}>Join us</span>
+            </p>
           </div>
           <motion.div 
             whileTap={{ scale: 0.9 }}

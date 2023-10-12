@@ -1,25 +1,27 @@
 import React from 'react'
 
+import { useSelector } from 'react-redux';
+import { pageSettings } from './../../constants/style';
+
 const MainPage = () => {
-<<<<<<< Updated upstream
-  return (
-    <div>MainPage</div>
-=======
 
   let authStatus = useSelector(state => state.auth)
+  let allUsers = useSelector(state => state.users)
 
+  // debugger
+  let currentUser = allUsers[authStatus.currentUser]
+  console.log(currentUser)
   return (
-    <>
-      <div>MainPage</div>
+    <div className={`${pageSettings.padding}`}>
+    <div>MainPage</div>
 
-      {authStatus.isLoggedIn? 
-        <h2>Congrats {authStatus.currentUser.name} are signed in</h2> 
-        : 
-        <h1>Not Logged In</h1>
-      }
-    </>
+    {authStatus.isLoggedIn? 
+      <h2>Congrats is signed in</h2> 
+      : 
+      <h1>Not Logged In</h1>
+    }
+    </div>
 
->>>>>>> Stashed changes
   )
 }
 

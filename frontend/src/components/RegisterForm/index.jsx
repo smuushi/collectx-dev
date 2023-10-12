@@ -14,14 +14,12 @@ const Register = ({setIsLogin}) => {
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: '',
-    ConfirmPassword:'',
     email: '',
   });
 
   const [errorMessage, setErrorMessage] = useState({
     username: '',
     password: '',
-    ConfirmPassword:'',
     email: '',
   })
   
@@ -36,7 +34,8 @@ const Register = ({setIsLogin}) => {
     });
   };
 
-  const handleCreateAccount = () => {
+  const handleCreateAccount = (e) => {
+    e.preventDefault()
     dispatch(createAccount(userInfo));
   };
 
@@ -53,27 +52,35 @@ const Register = ({setIsLogin}) => {
 
   return (
     <div className='w-full h-full flex items-center gap-5'>
-      <form className='h-full w-1/2 flex justify-center items-center'>
+      <form className='h-full w-full sm:w-1/2 flex flex-col justify-center gap-12 items-center'>
+        <div className=''>
+          <h1 className='text-center text-2xl font-bold tracking-widest'>Join us!</h1>
+        </div>
         <Space direction="vertical" size="large">
           <div className=''>
             <label className='font-mainPageFont tracking-wider'>Username</label>
-            <input className='px-5' name='username' type="text" onChange={onChange}/>
+            <input className='p-5' name='username' type="text" onChange={onChange}/>
             {errorMessage.username && <p className='text-red-500'>{errorMessage.username}</p>}
           </div>
           <div>
             <label className='tracking-wider'>Password</label>
-            <input className='px-5' name='password' type="password" onChange={onChange}/>
+            <input className='p-5' name='password' type="password" onChange={onChange}/>
             {errorMessage.password && <p className='text-red-500'>{errorMessage.password}</p>}
           </div>
-          <div>
+          {/* <div>
             <label className='tracking-wider'>Confirm Password</label>
             <input className='px-5' name='ConfirmPassword' type="password" onChange={onChange}/>
             {errorMessage.ConfirmPassword && <p className='text-red-500'>{errorMessage.ConfirmPassword}</p>}  
-          </div>
+          </div> */}
           <div>
             <label className='tracking-wider'>Contact Email</label>
-            <input className='px-5' name='email' type="email" onChange={onChange}/>
+            <input className='p-5' name='email' type="email" onChange={onChange}/>
             {errorMessage.email && <p className='text-red-500'>{errorMessage.email}</p>}
+          </div>
+          <div className='flex sm:hidden'>
+            <p className='text-sm'>
+              Already have account? <span className='text-[#E4405F] cursor-pointer underline' onClick={() => {setIsLogin(true)}}>Login</span>
+            </p>
           </div>
           <motion.div 
             whileTap={{ scale: 0.9 }}
@@ -97,8 +104,8 @@ const Register = ({setIsLogin}) => {
         </Space>
       </form>
 
-      <div className='h-full w-1/2 flex flex-col justify-around border border-1'>
-        <div className='w-full px-12 flex flex-col '>
+      <div className='sm:flex hidden w-1/2 h-full flex-col justify-around border border-1'>
+        <div className='w-full px-12 flex flex-col gap-5'>
             <h1 className='text-center text-2xl font-bold tracking-widest'>Wecome back!</h1>
             <div className='text-center text-md'>
               <p>Great to see you again! Let's get you signed in and on your way. hoping you've been doing well since your last visit !</p>

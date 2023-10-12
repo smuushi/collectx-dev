@@ -5,6 +5,12 @@ import RegisterForm from "./RegisterForm";
 //import Splash from "./Splash";
 import Header from './Header';
 import Footer from './Footer';
+import UserProfile from "./UserProfile";
+import UserFavorited from "./UserFavorited";
+import UserOfferMade from './UserOfferMade';
+import UserStore from './UserStore';
+import UserOwnCards from './UserOwnCards';
+import UserSetting from './UserSetting';
 
 
 export { 
@@ -13,5 +19,11 @@ export {
     //Navgation, 
     //Splash, 
     Header, 
-    Footer 
+    Footer,
+    UserProfile,
+    UserFavorited,
+    UserOfferMade,
+    UserStore,
+    UserOwnCards,
+    UserSetting
 };
