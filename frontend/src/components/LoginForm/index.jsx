@@ -35,7 +35,7 @@ const Login = ({setIsLogin}) => {
 
     // let success = await data;
 
-    debugger
+    // debugger
     if (data) {
         navigate('/profile')
     }

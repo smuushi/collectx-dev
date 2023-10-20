@@ -3,7 +3,8 @@ import { NavLink,useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import { Navigation } from './../../constants';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux_store/actions/authActions';
 
 const MobileHeader = () => {
   return (
@@ -18,6 +19,7 @@ const DesktopHeader = () => {
   const [active, setActive] = React.useState(path);
   const [scrolled, setScrolled] = React.useState(false);
   const isAuthenticated = useSelector(state => state.auth.isLoggedIn); //TODO: change to true when auth is implemented
+  const dispatch = useDispatch();
   // debugger
   React.useEffect(() => {
     setActive(path); // Update active path when path changes
@@ -36,6 +38,11 @@ const DesktopHeader = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [path]);
 
+  // logout
+    const logoutClick = (e) => {
+      e.preventDefault();
+      dispatch(logout());
+    }
   return (
     <nav className='sm:flex hidden fiexed top-0 w-full z-30'>
       <div className='w-full flex justify-between items-center mx-auto'>
@@ -72,7 +79,9 @@ const DesktopHeader = () => {
 
             {isAuthenticated ? 
               <div className="w-36 relative justify-self-start self-start">
-                  {/* <UserNav />  */}
+                  <div className=" w-20 rounded-full text-1xl bg-secondary px-4 py-2 hover:bg-tertiary cursor-pointer">
+                      <span onClick={logoutClick}>Logout</span>
+                  </div>
               </div>
               : 
               <NavLink

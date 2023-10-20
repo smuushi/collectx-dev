@@ -37,6 +37,13 @@ switch (action.type) {
         message: '',
         currentUser: action.payload
     }
+    case 'LOGOUT_SUCCESS':
+    return {
+        ...state,
+        isLoggedIn: false,
+        message: action.payload,
+        currentUser: null
+    };
     default:
     return state;
 }
