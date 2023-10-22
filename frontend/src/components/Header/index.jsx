@@ -1,6 +1,7 @@
 import { Navigation } from './../../constants';
 import { dropdown } from '../../motion';
 import { signOut } from '../../redux_store/actions/authActions';
+import SearchBar from './../SearchBar/index';
 
 import { useSelector,useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
@@ -119,6 +120,7 @@ const MobileHeader = () => {
       <NavLink to='/'>
         <p className='text-xl font-bold text-red-light'>Collect-X</p>
       </NavLink>
+      
       {isAuthenticated ? <MobileUserNav /> : <MobileGuestNav />}
     </div>
   )
@@ -214,8 +216,8 @@ const DesktopHeader = () => {
   return (
     <nav className={`sm:flex hidden w-full z-10 ${scrolled ? "shadow" : ""}`}>
       <div className='w-full flex justify-between items-center'>
-        <div className='flex items-center'>
-          <NavLink to={'/'} className='text-2xl font-bold text-red-light'>
+        <div className='flex items-center gap-1 xl:gap-3 2xl:gap-7'>
+          <NavLink to={'/'} className='xl:text-xl 2xl:text-2xl font-bold text-red-light'>
             <motion.div whileHover={{scale:1.1}}>
               Collect-X
             </motion.div>
@@ -225,11 +227,10 @@ const DesktopHeader = () => {
             Navigation.map((item, index) => {
               return (
                 <NavLink 
-                  
                   key={index} 
                   to={item.link} 
                   className={`${active === item.link ? "text-primary" : "text-tertiary"} 
-                  text-xl font-bold hover:text-black ml-8`}>
+                  text-lg 2xl:text-xl font-bold hover:text-black ml-8`}>
                   {item.name}
                 </NavLink>
               )
@@ -238,8 +239,11 @@ const DesktopHeader = () => {
         </div>
         {path !== '/login' && path !== '/register' && path !== '/postcard' && (
           <div className='h-10 flex gap-5 items-center'>
+            <div className='w-96 h-12'>
+              <SearchBar />
+            </div>
             <motion.div 
-              className="w-auto rounded-full text-sm bg-black text-white font-bold px-4 lg:px-8 py-3 cursor-pointer hover:bg-tertiary hover:text-black ease-linear duration-150">
+              className="w-auto flex flex-nowrap rounded-full text-sm bg-black text-white font-bold px-4 lg:px-8 py-4 cursor-pointer hover:bg-tertiary hover:text-black ease-linear duration-150">
                 <NavLink 
                   className="text-xs sm:text-[0.5rem] xl:text-[1rem] font-bold text-center"
                   to="/postcard">

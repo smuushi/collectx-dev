@@ -41,3 +41,12 @@ export const userNavigation = [
         url : "setting"
     },
 ]
+
+import { 
+    database_product_info 
+} from "./testData/card.js"
+
+
+export{
+    database_product_info
+}

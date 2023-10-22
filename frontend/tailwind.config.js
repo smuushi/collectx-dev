@@ -41,12 +41,20 @@ export default {
         // => @media (min-width: 1280px) { ... }
         '2xl': '1536px',
         // => @media (min-width: 1536px) { ... }
+        '3xl': '1920px',
+        '4xl': '2560px',
       },
       boxShadow: {
         card: "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px",
         focusCard: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;",
         list: "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;",
-        signTable: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px"
+        signTable: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
+        card : "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+        product: "rgba(0,0,0,0.08) 0 4px 15px",
+        button : "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;",
+        buttonactive : "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px, rgba(0, 0, 0, 0.15) -1.95px -1.95px 2.6px;",
+        btnActive : "rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;",
+        tag : "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;"
       },
       screens: {
         'sm': '640px',
