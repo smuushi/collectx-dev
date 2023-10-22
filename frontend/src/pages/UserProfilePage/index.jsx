@@ -6,67 +6,76 @@ import {
   UserOwnCards,
   UserSetting
 } from '../../components'
-import { userNavigation } from '../../constants'
+import { pageSettings } from './../../constants/style';
 
-import { useState } from "react";
+import { userNavigation } from '../../constants'
+import { useState,useEffect } from "react";
 import { useSelector } from 'react-redux';
 import { 
   Routes, 
   Route, 
   NavLink,
-  useLocation 
+  useLocation,
 } from 'react-router-dom';
 
 const UserProfilePage = () => {
-
-  const user = useSelector(state => state.auth.currentUser); // get user info from database
+  let authStatus = useSelector(state => state.auth)
+  let allUsers = useSelector(state => state.users)
+  let currentUser = allUsers[authStatus.currentUser]
+  //TODO: BUG- when refresh page, currentUser is undefined
+  //const currentUser = useSelector(state => state.profile.profile)
 
   const location = useLocation();
   const pathParts = location.pathname.split('/'); //split path by '/'
-  //get last part of path
-  const lastPath = pathParts[pathParts.length - 1];
+  const lastPath = pathParts[pathParts.length - 1];//get last part of path
   const [ active, setActive ] = useState(lastPath);
-
+  useEffect(() => {
+    const pathParts = location.pathname.split('/'); //split path by '/'
+    const lastPath = pathParts[pathParts.length - 1];//get last part of path
+    setActive(lastPath);
+  },[location])
   return (
     <div className='w-full h-full relative'>
-      <div className="w-full h-96 bg-secondary relative mb-20">
-        <div className="w-36 h-36 rounded-full shadow-card border border-white absolute -bottom-16 left-16 flex justify-center items-center bg-white" >
+      <div className="w-full h-64 md:h-96 bg-secondary relative mb-20">
+        <div className="w-24 h-24 md:w-36 md:h-36 rounded-full shadow-card border border-white absolute -bottom-12 md:-bottom-16 left-8 md:left-64 lg:left-80 flex justify-center items-center bg-white" >
           avatar
         </div>
       </div>
 
-      <div>
-        <p className="text-2xl font-bold">{user.username}</p>
-        <p className="text-four">Joined 2022(User infomation)</p>
-      </div>
+      <div className={pageSettings.padding}>
+        <div>
+          <p className="text-2xl font-bold">{currentUser.username}</p>
+          <p className="text-four">Joined 2022 ( User infomation )</p>
+        </div>
 
-      <div className="flex gap-5 mb-5 mt-5">
-        <ul className="flex gap-5">
-            {
-              userNavigation.map((nav,index) => (
-                  <li key={index} onClick={() => setActive(nav.url)}>
-                    <NavLink 
-                        to={nav.url} 
-                        className={`${active === nav.url ? "text-black font-semibold bg-slate-100" : "text-four hover:bg-slate-100 "}  rounded-lg h-10 p-2 flex gap-5 items-center cursor-pointer`}>
-                        <span className={`tracking-wider text-sm `}>{nav.name}</span>
-                    </NavLink>
-                  </li>
-              ))}
-        </ul>   
-      </div>
+        <div className="flex gap-5 mb-5 mt-5">
+          <ul className="flex gap-5 overflow-scroll md:overflow-auto py-5">
+              {
+                userNavigation.map((nav,index) => (
+                    <li key={index} onClick={() => setActive(nav.url)}>
+                      <NavLink 
+                          to={nav.url} 
+                          className={`${active === nav.url ? "text-black bg-slate-100" : "text-four hover:bg-slate-100 "}  rounded-lg h-10 p-2 flex gap-5 items-center cursor-pointer`}>
+                          <span className={`tracking-wider text-sm `}>{nav.name}</span>
+                      </NavLink>
+                    </li>
+                ))}
+          </ul>   
+        </div>
 
-      <hr />
-      <div className="mt-5">
-          <Routes>
-              <Route default element={<UserProfile user={user}/>}/>
-              <Route path="/" element={<UserProfile user={user}/>}/>
-              <Route path="/profile" element={<UserProfile user={user}/>}/>
-              <Route path="/favorited" element={<UserFavorited user={user}/>}/>
-              <Route path="/offer-made" element={<UserOfferMade user={user}/>}/>
-              <Route path="/store" element={<UserStore user={user}/>}/>
-              <Route path="/own-cards" element={<UserOwnCards user={user}/>}/>
-              <Route path="/setting" element={<UserSetting user={user}/>}/>
-          </Routes>
+        <hr />
+        <div className="mt-5">
+            <Routes>
+                <Route default element={<UserProfile/>}/>
+                <Route path="/" element={<UserProfile/>}/>
+                <Route path="/profile" element={<UserProfile />}/>
+                <Route path="/favorited" element={<UserFavorited />}/>
+                <Route path="/offer-made" element={<UserOfferMade/>}/>
+                <Route path="/store" element={<UserStore />}/>
+                <Route path="/own-cards" element={<UserOwnCards/>}/>
+                <Route path="/setting" element={<UserSetting/>}/>
+            </Routes>
+        </div>
       </div>
     </div>
   )

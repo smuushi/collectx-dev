@@ -47,7 +47,7 @@ function App() {
           <Header />
         </div>
         
-        <main className='realtive border'>
+        <main className='realtive'>
           <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/about' element={<AboutPage />} />

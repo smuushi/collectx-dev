@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Space,Divider, } from 'antd';
+import { Space,Divider, message, } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ImGoogle } from "react-icons/im";
@@ -32,10 +32,10 @@ const Login = ({setIsLogin}) => {
   const handleSignIn = async (e) => {
     e.preventDefault();
     const data = await dispatch(signIn(userInfo));
-
+    message.success("Login success")
     // let success = await data;
 
-    debugger
+    //debugger
     if (data) {
         navigate('/profile')
     }
@@ -74,11 +74,11 @@ const Login = ({setIsLogin}) => {
           
           <div className=''>
             <label className='font-mainPageFont tracking-wider'>Email</label>
-            <input name='email' className='px-5' type="text" onChange={onChange}/>
+            <input name='email' className='px-5 h-12' type="text" onChange={onChange}/>
           </div>
           <div>
             <label className='tracking-wider'>Password</label>
-            <input name='password' className='px-5' type="password" onChange={onChange}/>
+            <input name='password' className='px-5 h-12' type="password" onChange={onChange}/>
           </div>
           <div>
             {errorMessage && <p className='text-red-500'>{errorMessage}</p>}

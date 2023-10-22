@@ -1,20 +1,20 @@
 
 
-// const initialState = {
-//     isLoggedIn: false,
-//     message: '',
-//     currentUser: null,
-// };
+const initialState = {
+    isLoggedIn: false,
+    message: '',
+    currentUser: null,
+};
 
 //For test
-const initialState = {
-    isLoggedIn: true,
-    message: '',
-    currentUser: {
-        email: "test@gmail.com",
-        username : "test",
-    },
-  };
+// const initialState = {
+//     isLoggedIn: true,
+//     message: '',
+//     currentUser: {
+//         email: "test@gmail.com",
+//         username : "test",
+//     },
+//   };
 
 const authReducer = (state = initialState, action) => {
     // debugger
