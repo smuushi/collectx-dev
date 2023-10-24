@@ -1,7 +1,8 @@
-import React from 'react'
+import style from "../../style.module.scss"
+import { signIn, createAccount } from '../../redux_store/actions/authActions';
+
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { signIn, createAccount } from '../../redux_store/actions/authActions';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Space,Divider } from 'antd';
@@ -59,12 +60,12 @@ const Register = ({setIsLogin}) => {
         <Space direction="vertical" size="large">
           <div className=''>
             <label className='font-mainPageFont tracking-wider'>Username</label>
-            <input className='p-5 h-12' name='username' type="text" onChange={onChange}/>
+            <input className={`${style.input} px-5 h-12`} name='username' type="text" onChange={onChange}/>
             {errorMessage.username && <p className='text-red-500'>{errorMessage.username}</p>}
           </div>
           <div>
             <label className='tracking-wider'>Password</label>
-            <input className='p-5 h-12' name='password' type="password" onChange={onChange}/>
+            <input className={`${style.input} px-5 h-12`} name='password' type="password" onChange={onChange}/>
             {errorMessage.password && <p className='text-red-500'>{errorMessage.password}</p>}
           </div>
           {/* <div>
@@ -74,7 +75,7 @@ const Register = ({setIsLogin}) => {
           </div> */}
           <div>
             <label className='tracking-wider'>Contact Email</label>
-            <input className='p-5 h-12' name='email' type="email" onChange={onChange}/>
+            <input className={`${style.input} px-5 h-12`} name='email' type="email" onChange={onChange}/>
             {errorMessage.email && <p className='text-red-500'>{errorMessage.email}</p>}
           </div>
           <div className='flex sm:hidden'>

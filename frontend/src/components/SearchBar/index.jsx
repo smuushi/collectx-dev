@@ -23,7 +23,7 @@ const SearchBar = () => {
                 <input
                     type="text"
                     value={text}
-                    className="h-12 w-full py-[20px] px-[12px]"
+                    className="h-12 w-full py-[20px] px-[12px] focus:outline-none"
                     placeholder="Search product..."
                     onChange={(e) => setText(e.target.value)}
                 />

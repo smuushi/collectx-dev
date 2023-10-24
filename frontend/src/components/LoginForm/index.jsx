@@ -1,14 +1,12 @@
-import React from 'react'
+import { signIn } from '../../redux_store/actions/authActions';
+import style from "../../style.module.scss"
+
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Space,Divider, message, } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ImGoogle } from "react-icons/im";
-
-
-import { signIn } from '../../redux_store/actions/authActions';
-
 
 const Login = ({setIsLogin}) => {
   const dispatch = useDispatch(); 
@@ -74,11 +72,11 @@ const Login = ({setIsLogin}) => {
           
           <div className=''>
             <label className='font-mainPageFont tracking-wider'>Email</label>
-            <input name='email' className='px-5 h-12' type="text" onChange={onChange}/>
+            <input name='email' className={`${style.input} px-5 h-12`} type="text" onChange={onChange}/>
           </div>
           <div>
             <label className='tracking-wider'>Password</label>
-            <input name='password' className='px-5 h-12' type="password" onChange={onChange}/>
+            <input name='password' className={`${style.input} px-5 h-12`} type="password" onChange={onChange}/>
           </div>
           <div>
             {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
