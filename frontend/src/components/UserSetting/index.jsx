@@ -134,7 +134,7 @@ const UserSetting = () => {
                         <div><UploadAvatar /></div>
                     </div>
                     <div className = 'px-2 md:px-16 w-full flex flex-col md:flex-row justify-between items-center gap-3 mt-5'>
-                        <p className='w-full md:w-auto px-2 '>Change your Username</p>
+                        <p className='w-full md:w-auto px-2 '>Change Username</p>
                         <input className='md:w-96 h-10 border border-gray-300 rounded-md px-2' type='text' placeholder='Username'/>
                         <motion.div
                             whileHover={{ scale: 1.05 }}
@@ -145,7 +145,7 @@ const UserSetting = () => {
                         </motion.div>
                     </div>
                     <div className = 'px-2 md:px-16 w-full flex flex-col md:flex-row justify-between items-center gap-3 mt-5'>
-                        <p className='w-full md:w-auto px-2 '>Change your Email Add</p>
+                        <p className='w-full md:w-auto px-2 '>Change Email Add</p>
                         <input className='md:w-96 h-10 border border-gray-300 rounded-md px-2' type='text' placeholder='Username'/>
                         <motion.div
                             whileHover={{ scale: 1.05 }}
@@ -156,7 +156,7 @@ const UserSetting = () => {
                         </motion.div>
                     </div>
                     <div className = 'px-2 md:px-16 w-full flex flex-col md:flex-row justify-between items-center gap-3 mt-5'>
-                        <p className='w-full md:w-auto px-2 '>Change your Password</p>
+                        <p className='w-full md:w-auto px-2 '>Change Password</p>
                         <input className='md:w-96 h-10 border border-gray-300 rounded-md px-2' type='text' placeholder='Password'/>
                         <motion.div
                             whileHover={{ scale: 1.05 }}

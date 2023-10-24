@@ -1,6 +1,5 @@
 import { signIn } from '../../redux_store/actions/authActions';
 import style from "../../style.module.scss"
-import { fakeLogin } from '../../constants';
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -32,7 +31,7 @@ const Login = ({setIsLogin}) => {
   const handleSignIn = async (e) => {
     e.preventDefault();
     const data = await dispatch(signIn(userInfo));
-    //fakeLogin();
+    //const data = fakeLogin();
     message.success("Login success")
 
     //debugger
@@ -40,6 +39,58 @@ const Login = ({setIsLogin}) => {
         navigate('/profile/own-cards')
     }
   };
+
+  /**
+   * Myles request a fake login function
+   */
+  const fakeLogin = () =>{
+  dispatch({
+      type: 'CREATE_ACCOUNT_SUCCESS',
+      payload: {
+      email: 'admin@gmail.com',
+      password: userInfo.password,
+      username: "admin",
+      }
+  })
+  dispatch({
+      type: 'SIGN_IN_SUCCESS',
+      payload: {
+      message: "Login success",
+      user: {
+          role: "user",
+          isEmailVerified: false,
+          email: 'admin@gmail.com',
+          username: "admin",
+          id: '650ce9bdd8d81b6086ee0092',
+      }
+      },
+      user: '650ce9bdd8d81b6086ee0092',
+  })
+  dispatch({
+      type: 'SET_USER',
+      payload: [{
+      role: "user",
+      isEmailVerified: false,
+      email: 'admin@gmail.com',
+      username: "admin",
+      id: '650ce9bdd8d81b6086ee0092',
+      }]
+  })
+  dispatch({
+      type: 'UPDATE_USER',
+      payload: {
+      role: "user",
+      isEmailVerified: false,
+      email: 'admin@gmail.com',
+      username: "admin",
+      id: '650ce9bdd8d81b6086ee0092',
+      }
+  })
+  navigate('/profile/own-cards')
+
+  return "data!";
+}
+
 
   return (
     <div className='w-full h-full flex items-center gap-5'>

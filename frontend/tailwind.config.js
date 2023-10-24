@@ -120,6 +120,7 @@ export default {
       },
       backgroundImage: {
         "hero-pattern": "url('/src/assets/herobg.png')",
+        "userbackground": "url('/src/constants/testData/userbackground.jpg')",
       },
       fontFamily : {
         'base-font' : ['Montserrat']

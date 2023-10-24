@@ -1,6 +1,7 @@
 import { pageSettings } from './../../constants/style';
 import { database_product_info } from "../../constants"
 import style from '../../style.module.scss'
+import { pic1,pic2 } from '../../assets';
 
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
@@ -12,10 +13,10 @@ const CarouselComponent = () => {
   const contentStyle= {
     margin: 0,
     height: '320px',
-    color: '#f0f0f0',
+    color: 'black',
     lineHeight: '160px',
     textAlign: 'center',
-    background: '#364d79',
+    background: '#E5E5E5',
   };
 
 
@@ -24,16 +25,33 @@ const CarouselComponent = () => {
       autoplay
     >
       <div>
-        <h3 style={contentStyle}>advertisment 1</h3>
+        <div style={contentStyle}> 
+          <img 
+            className="w-full h-full object-contain"
+            src={pic2}
+            alt="img"
+          />
+        </div>
+      </div>
+
+      <div>
+        <div style={contentStyle}>
+          <img 
+            className="w-full h-full object-contain"
+            src={pic1}
+            alt="img"
+          />
+        </div>
       </div>
       <div>
-        <h3 style={contentStyle}>advertisment 2</h3>
+        <div style={contentStyle}>
+          <span className='font-bold text-xl'>advertisment 3</span>
+        </div>
       </div>
       <div>
-        <h3 style={contentStyle}>advertisment 3</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>advertisment 4</h3>
+        <div style={contentStyle}>
+          <span className='font-bold text-xl'>advertisment 4</span>
+        </div>
       </div>
     </Carousel>
   )
@@ -84,7 +102,7 @@ const ProductList = ({name,list}) =>{
    */
   const PCList = ({list}) =>(
       <div className="hidden md:block">
-          <div className="flex justify-start gap-24">
+          <div className="flex flex-wrap justify-start gap-16">
               {list.map((product,index) => <PCard key={index} id={product.id} productName={product.name} productImg={product.img} category={product.tag.Category}/>)}
           </div>
       </div>

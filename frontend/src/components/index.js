@@ -10,6 +10,7 @@ import UserFavorited from "./UserFavorited";
 import UserOfferMade from './UserOfferMade';
 import UserOwnCards from './UserOwnCards';
 import UserSetting from './UserSetting';
+import Asset from './Asset';
 
 
 export { 
@@ -20,6 +21,7 @@ export {
     //Splash, 
     Header, 
     Footer,
+    Asset,
     UserFavorited,
     UserOfferMade,
     UserOwnCards,

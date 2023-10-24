@@ -54,7 +54,7 @@ function App() {
             <Route path='/login' element={<LoginPage />} />
             <Route path='/browse' element={<BrowsePage />} />
             <Route path='/profile/*' element={<UserProfilePage />} />
-            <Route path='/asset' element={<AssetPage />} />
+            <Route path='/asset/:id' element={<AssetPage />} />
             <Route path='/filter' element={<FilterPage />} />
             <Route path='*' element={<h1>404 Page Not Found</h1>} />
           </Routes>

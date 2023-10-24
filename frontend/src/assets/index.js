@@ -23,7 +23,8 @@ import img_id22 from "./product_img/nft_image_22.jpg";
 import img_id23 from "./product_img/nft_image_23.jpg";
 import img_id24 from "./product_img/nft_image_24.jpg";
 
-
+import pic1 from './advertisement/pic1.png';
+import pic2 from './advertisement/pic2.png';
 
 
 export {
@@ -51,4 +52,7 @@ export {
     img_id22,
     img_id23,
     img_id24,
+
+    pic1,
+    pic2,
 }

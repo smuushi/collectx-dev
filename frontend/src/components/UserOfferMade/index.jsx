@@ -2,7 +2,9 @@ import React from 'react'
 
 const UserOfferMade = () => {
   return (
-    <div>UserOfferMade</div>
+    <div className='w-full border rounded-md h-64'>
+
+    </div>
   )
 }
 

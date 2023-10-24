@@ -19,6 +19,11 @@ import {
   useLocation,
 } from 'react-router-dom';
 
+import avatar from "../../constants/testData/avatar.jpg"
+import userbackground from "../../constants/testData/userbackground.jpg"
+
+
+
 const UserProfilePage = () => {
   let authStatus = useSelector(state => state.auth)
   let allUsers = useSelector(state => state.users)
@@ -37,9 +42,9 @@ const UserProfilePage = () => {
   },[location])
   return (
     <div className='w-full h-full relative'>
-      <div className="w-full h-64 md:h-96 bg-secondary relative mb-20">
+      <div className="w-full h-64 md:h-96 bg-userbackground relative mb-20">
         <div className="w-24 h-24 md:w-36 md:h-36 rounded-full shadow-card border border-white absolute -bottom-12 md:-bottom-16 left-8 md:left-64 lg:left-80 flex justify-center items-center bg-white" >
-          avatar
+          <img src={avatar} alt="avatar" className="w-20 h-20 md:w-32 md:h-32 rounded-full object-cover" />
         </div>
       </div>
 
