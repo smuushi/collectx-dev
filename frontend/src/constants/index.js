@@ -17,16 +17,8 @@ export const Navigation = [
 
 export const userNavigation = [
     {
-        name: "Profile",
-        url : "profile"
-    },
-    {
         name: "my Cards",
         url : "own-cards"
-    },
-    {
-        name: "Your store",
-        url : "store"
     },
     {
         name: "Offers made",

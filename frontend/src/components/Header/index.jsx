@@ -13,28 +13,17 @@ import { AiFillSetting,AiOutlineHeart,AiOutlineMenu,AiOutlineLogin } from "react
 import { GiCardBurn } from "react-icons/gi"
 import { BsPersonVcard } from "react-icons/bs"
 import { FiLogOut } from "react-icons/fi"
-import { BiStore } from "react-icons/bi"
+import { StockOutlined } from "@ant-design/icons";
 
 const userNav = [
-    
-  {
-    name : "Profile",
-    icon : <BsPersonVcard/>,
-    url : "/profile"
-  },
   {
     name : "my cards",
     icon : <GiCardBurn />,
     url :  "/profile/own-cards"
   },
   {
-    name : "My store",
-    icon : <BiStore />,
-    url : "/profile/store"
-  },
-  {
     name : "Offer made",
-    icon : <GiCardBurn />,
+    icon : <StockOutlined />,
     url : "/profile/offer-made"
   },
   {
@@ -77,7 +66,7 @@ const MobileUserNav = () => {
                 className="w-full rounded-md relative overflow-hidden shadow-list">
                 <div className="flex items-center gap-5 text-md justify-start px-4 py-3">
                   {item.icon}
-                  <span>{item.name}</span>
+                  <span><BsPersonVcard/> {item.name}</span>
                 </div>
               </NavLink>
             )
@@ -151,7 +140,7 @@ const UserNav = ({currentUser}) =>{
             <motion.button 
                 whileTap={{ scale: 0.97 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className= "min-w-12 w-auto z-10 rounded-full text-1xl text-center bg-secondary px-6 py-2 hover:bg-tertiary cursor-pointer flex gap-2 items-center text-black-100">
+                className= "w-auto flex justify-center items-center h-full rounded-full text-1xl bg-secondary px-4 py-2 hover:bg-tertiary cursor-pointer">
                     <span>{currentUser.username}</span>
                     {/* <img src={user.avatar} alt="profile" className="rounded-full w-5 h-5"/> */}
             </motion.button>
@@ -214,57 +203,30 @@ const DesktopHeader = () => {
   }, [path]);
 
   return (
-    <nav className={`sm:flex hidden w-full z-10 ${scrolled ? "shadow" : ""}`}>
-      <div className='w-full flex justify-between items-center'>
-        <div className='flex items-center gap-1 xl:gap-3 2xl:gap-7'>
-          <NavLink to={'/'} className='xl:text-xl 2xl:text-2xl font-bold text-red-light'>
-            <motion.div whileHover={{scale:1.1}}>
-              Collect-X
-            </motion.div>
-          </NavLink>
-          
-          {path !== '/login' && path !== '/register' && path !== '/postcard' &&(
-            Navigation.map((item, index) => {
-              return (
-                <NavLink 
-                  key={index} 
-                  to={item.link} 
-                  className={`${active === item.link ? "text-primary" : "text-tertiary"} 
-                  text-lg 2xl:text-xl font-bold hover:text-black ml-8`}>
-                  {item.name}
-                </NavLink>
-              )
-            })
-          )}
-        </div>
-        {path !== '/login' && path !== '/register' && path !== '/postcard' && (
-          <div className='h-10 flex gap-5 items-center'>
-            <div className='w-96 h-12'>
+    <nav className={` sm:flex hidden w-full z-10 ${scrolled ? "shadow" : ""}`}>
+      <div className='w-full flex justify-between items-start'>
+        <NavLink to={'/'} className='xl:text-xl 2xl:text-2xl font-bold text-red-light'>
+          <motion.div whileHover={{scale:1.1}}>Collect-X</motion.div>
+        </NavLink>
+        {path !== '/login' && (
+          <>
+            <div className='w-1/2 h-12'>
               <SearchBar />
             </div>
-            <motion.div 
-              className="w-auto flex flex-nowrap rounded-full text-sm bg-black text-white font-bold px-4 lg:px-8 py-4 cursor-pointer hover:bg-tertiary hover:text-black ease-linear duration-150">
-                <NavLink 
-                  className="text-xs sm:text-[0.5rem] xl:text-[1rem] font-bold text-center"
-                  to="/postcard">
-                    Post My Card
-                </NavLink>
-              </motion.div>
-
+            <div className='flex gap-8 justify-center'>
               {isAuthenticated ? 
-              <div className="relative justify-self-start self-start">
+                <div className="h-12 relative justify-self-start self-start">
                   <UserNav currentUser={currentUser}/> 
-              </div>
-              : 
-              <NavLink
-                to='/login'
-                className="w-36 relative justify-self-start self-start flex justify-end ">
-                  <div className=" w-20 rounded-full text-1xl bg-secondary px-4 py-2 hover:bg-tertiary cursor-pointer">
-                      <span >Log in</span>
-                  </div>
-              </NavLink>  
-            }
-          </div>
+                </div>
+                : 
+                <NavLink
+                  to='/login'
+                  className="w-auto flex justify-center items-center h-full rounded-full text-1xl bg-secondary px-4 py-3 hover:bg-tertiary cursor-pointer">
+                  <span >Log in / Sign up</span>
+                </NavLink> 
+              }
+            </div>
+          </>
         )}
       </div>
     </nav>
