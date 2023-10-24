@@ -7,7 +7,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 import React, { useState, useEffect } from 'react'
 import { NavLink,useLocation } from 'react-router-dom';
-import { Drawer } from 'antd';
+import { Drawer, message } from 'antd';
 
 import { AiFillSetting,AiOutlineHeart,AiOutlineMenu,AiOutlineLogin } from "react-icons/ai";
 import { GiCardBurn } from "react-icons/gi"
@@ -43,6 +43,7 @@ const MobileUserNav = () => {
   const dispatch = useDispatch();
   const handleSignOut = () => {
     dispatch(signOut());
+    message.success('Sign out successfully');
   }
   return(
     <div>
@@ -183,6 +184,7 @@ const DesktopHeader = () => {
   //User
   const isAuthenticated = useSelector(state => state.auth.isLoggedIn); //TODO: change to true when auth is implemented
   const authStatus = useSelector(state => state.auth)
+  console.log(authStatus)
   const allUsers = useSelector(state => state.users)
   const currentUser = allUsers[authStatus.currentUser]
   // debugger

@@ -1,5 +1,6 @@
 import { signIn } from '../../redux_store/actions/authActions';
 import style from "../../style.module.scss"
+import { fakeLogin } from '../../constants';
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -27,11 +28,12 @@ const Login = ({setIsLogin}) => {
     });
   };
 
+  
   const handleSignIn = async (e) => {
     e.preventDefault();
     const data = await dispatch(signIn(userInfo));
+    //fakeLogin();
     message.success("Login success")
-    // let success = await data;
 
     //debugger
     if (data) {
