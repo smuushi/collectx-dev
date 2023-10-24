@@ -47,7 +47,7 @@ function App() {
           <Header />
         </div>
         
-        <main className='realtive'>
+        <main className='realtive h-auto '>
           <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/about' element={<AboutPage />} />
@@ -60,9 +60,9 @@ function App() {
           </Routes>
         </main>
         
-        <div className='absolute h-auto w-screen md:w-full bottom-0 border'>
+        <footer className='w-screen md:w-full bg-[#24262b]'>
           <Footer />
-        </div>
+        </footer>
       </div>
     </div>
   )
