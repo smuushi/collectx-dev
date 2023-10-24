@@ -6,10 +6,8 @@ import RegisterForm from "./RegisterForm";
 import SearchBar from "./SearchBar";
 import Header from './Header';
 import Footer from './Footer';
-import UserProfile from "./UserProfile";
 import UserFavorited from "./UserFavorited";
 import UserOfferMade from './UserOfferMade';
-import UserStore from './UserStore';
 import UserOwnCards from './UserOwnCards';
 import UserSetting from './UserSetting';
 
@@ -22,10 +20,8 @@ export {
     //Splash, 
     Header, 
     Footer,
-    UserProfile,
     UserFavorited,
     UserOfferMade,
-    UserStore,
     UserOwnCards,
     UserSetting
 };

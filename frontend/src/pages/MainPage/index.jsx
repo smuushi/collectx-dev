@@ -125,15 +125,6 @@ const MainPage = () => {
         style={{
           display: 'flex',
         }}>
-        <div className='w-full'>
-
-        </div>
-        <div className='w-full flex justify-center'>
-          <div className='h-12 w-2/3'>
-            
-          </div>
-        </div>
-
         <CarouselComponent />
         <ProductList name="Your Recently Viewed Items" list={database_product_info.slice(0, 5)} />
         <ProductList name="Your watched items" list={database_product_info.slice(6, 10)} />

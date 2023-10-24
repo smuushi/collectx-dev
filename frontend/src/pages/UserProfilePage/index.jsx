@@ -1,8 +1,6 @@
 import {
-  UserProfile,
   UserFavorited,
   UserOfferMade,
-  UserStore,
   UserOwnCards,
   UserSetting
 } from '../../components'
@@ -11,6 +9,9 @@ import { pageSettings } from './../../constants/style';
 import { userNavigation } from '../../constants'
 import { useState,useEffect } from "react";
 import { useSelector } from 'react-redux';
+import { Rate,Tag } from 'antd';
+import { CheckCircleOutlined } from '@ant-design/icons';
+
 import { 
   Routes, 
   Route, 
@@ -43,9 +44,20 @@ const UserProfilePage = () => {
       </div>
 
       <div className={pageSettings.padding}>
-        <div>
-          <p className="text-2xl font-bold">{currentUser.username}</p>
+        <div className='flex flex-col gap-5'>
+          <div className='flex gap-5 items-center'>
+            <p className="text-2xl font-bold">{currentUser.username}</p>
+            <Rate defaultValue={4.5} disabled allowHalf />
+          </div>
           <p className="text-four">Joined 2022 ( User infomation )</p>
+          <div>
+          <Tag 
+            icon={<CheckCircleOutlined />} 
+            color="#4CAF50"
+          >
+            Verified Store
+          </Tag>
+          </div>
         </div>
 
         <div className="flex gap-5 mb-5 mt-5">
@@ -66,12 +78,10 @@ const UserProfilePage = () => {
         <hr />
         <div className="mt-5">
             <Routes>
-                <Route default element={<UserProfile/>}/>
-                <Route path="/" element={<UserProfile/>}/>
-                <Route path="/profile" element={<UserProfile />}/>
+                <Route default element={<UserOwnCards/>}/>
+                <Route path="/" element={<UserOwnCards/>}/>
                 <Route path="/favorited" element={<UserFavorited />}/>
                 <Route path="/offer-made" element={<UserOfferMade/>}/>
-                <Route path="/store" element={<UserStore />}/>
                 <Route path="/own-cards" element={<UserOwnCards/>}/>
                 <Route path="/setting" element={<UserSetting/>}/>
             </Routes>

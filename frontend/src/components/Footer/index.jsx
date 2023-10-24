@@ -6,7 +6,7 @@ import { AiFillFacebook, AiFillInstagram, AiFillTwitterCircle, AiFillYoutube } f
 const Footer = () => {
 
   const footerStyle = {
-    title : "text-2xl font-bold text-white border-b-2 border-[#e91e63]"
+    title : "text-2xl font-bold text-white pb-3 border-b-2 border-[#e91e63] text-capitalize"
   }
 
   const companyul = [

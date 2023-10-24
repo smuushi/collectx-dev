@@ -35,7 +35,7 @@ const Login = ({setIsLogin}) => {
 
     //debugger
     if (data) {
-        navigate('/profile')
+        navigate('/profile/own-cards')
     }
   };
 
