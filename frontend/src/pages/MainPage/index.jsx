@@ -128,7 +128,10 @@ const ProductList = ({name,list}) =>{
 }
 
 
+import { useSelector } from 'react-redux';
+
 const MainPage = () => {
+
 
   // let authStatus = useSelector(state => state.auth)
   // let allUsers = useSelector(state => state.users)
@@ -150,6 +153,7 @@ const MainPage = () => {
       </Space>
       
     </div>
+
 
   )
 }

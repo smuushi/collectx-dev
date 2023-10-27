@@ -6,7 +6,7 @@ const { roles } = require('../config/roles');
 
 const userSchema = mongoose.Schema(
   {
-    name: {
+    username: {
       type: String,
       required: true,
       trim: true,
@@ -86,6 +86,6 @@ userSchema.pre('save', async function (next) {
 /**
  * @typedef User
  */
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema, "users");
 
 module.exports = User;

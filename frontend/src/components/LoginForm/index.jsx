@@ -27,6 +27,7 @@ const Login = ({setIsLogin}) => {
     });
   };
 
+
   
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -34,7 +35,7 @@ const Login = ({setIsLogin}) => {
     //const data = fakeLogin();
     message.success("Login success")
 
-    //debugger
+
     if (data) {
         navigate('/profile/own-cards')
     }
@@ -125,7 +126,9 @@ const Login = ({setIsLogin}) => {
           
           <div className=''>
             <label className='font-mainPageFont tracking-wider'>Email</label>
+
             <input name='email' className={`${style.input} px-5 h-12`} type="text" onChange={onChange}/>
+
           </div>
           <div>
             <label className='tracking-wider'>Password</label>

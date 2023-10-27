@@ -1,3 +1,7 @@
+const jwt = require('jsonwebtoken');
+const config = require('../config/config');
+const ApiError = require('../utils/ApiError');
+
 const httpStatus = require('http-status');
 const catchAsync = require('../utils/catchAsync');
 const { authService, userService, tokenService, emailService } = require('../services');
@@ -47,6 +51,29 @@ const verifyEmail = catchAsync(async (req, res) => {
   res.status(httpStatus.NO_CONTENT).send();
 });
 
+const verifyJwtToken = async (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.split('Bearer ')[1];
+
+  if (!token) {
+    return next(new ApiError(httpStatus.BAD_REQUEST, 'No token provided'));
+  }
+
+  try {
+    const payload = jwt.verify(token, config.jwt.secret);
+    const userId = payload.sub;
+
+    // Do whatever you need with userId
+    // ...
+
+    res.status(httpStatus.OK).send({ message: 'Token is valid', userId });
+
+  } catch (err) {
+    // Handle token verification error
+    return next(new ApiError(httpStatus.UNAUTHORIZED, 'Invalid or expired token'));
+  }
+};
+
 module.exports = {
   register,
   login,
@@ -56,4 +83,5 @@ module.exports = {
   resetPassword,
   sendVerificationEmail,
   verifyEmail,
+  verifyJwtToken
 };

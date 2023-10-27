@@ -41,6 +41,7 @@ switch (action.type) {
         ...state,
         message: action.payload,
     };
+
     case 'SIGN_OUT_SUCCESS':
     return {
         ...state,
@@ -61,7 +62,9 @@ switch (action.type) {
         isLoggedIn: true,
         message: '',
         currentUser: action.payload
+
     };
+
     default:
     return state;
 }

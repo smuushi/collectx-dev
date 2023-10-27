@@ -11,7 +11,8 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSignIn = () => {
+    const handleSignIn = (e) => {
+        e.preventDefault()
         const data = dispatch(signIn(username, password));
         if (data) {
             navigate('/profile')
