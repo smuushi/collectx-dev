@@ -7,8 +7,6 @@ import { motion } from 'framer-motion';
 import React, { useState, useEffect } from 'react'
 import { NavLink,useLocation } from 'react-router-dom';
 import { Drawer, message } from 'antd';
-import { Navigation } from './../../constants';
-import { useSelector } from 'react-redux';
 import { AiFillSetting,AiOutlineHeart,AiOutlineMenu,AiOutlineLogin } from "react-icons/ai";
 import { GiCardBurn } from "react-icons/gi"
 import { BsPersonVcard } from "react-icons/bs"
@@ -182,14 +180,8 @@ const DesktopHeader = () => {
 
   const [active, setActive] = React.useState(path);
   const [scrolled, setScrolled] = React.useState(false);
-  const isAuthenticated = useSelector(state => state.auth.isLoggedIn); //TODO: change to true when auth is implemented
   // debugger
-  React.useEffect(() => {
-    setActive(path); // Update active path when path changes
 
-
-  const [active, setActive] = useState(path); // Active path state
-  const [scrolled, setScrolled] = useState(false); // Check if page has been scrolled
   
   //User
   const isAuthenticated = useSelector(state => state.auth.isLoggedIn); //TODO: change to true when auth is implemented
@@ -198,49 +190,24 @@ const DesktopHeader = () => {
   const allUsers = useSelector(state => state.users)
   const currentUser = allUsers[authStatus.currentUser]
   // debugger
-  useEffect(() => {
-    setActive(path); // Update active path when path changes
-    // Handle scroll
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 10) {
-          setScrolled(true);
-      } else {
-          setScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [path]);
+    useEffect(() => {
+      setActive(path); // Update active path when path changes
+      // Handle scroll
+      const handleScroll = () => {
+        const scrollTop = window.scrollY;
+        if (scrollTop > 10) {
+            setScrolled(true);
+        } else {
+            setScrolled(false);
+        }
+      };
+      window.addEventListener("scroll", handleScroll);
+
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, [path]);
 
   return (
-
-    <nav className={` sm:flex hidden w-full z-10 ${scrolled ? "shadow" : ""}`}>
-      <div className='w-full flex justify-between items-start'>
-        <NavLink to={'/'} className='xl:text-xl 2xl:text-2xl font-bold text-red-light'>
-          <motion.div whileHover={{scale:1.1}}>Collect-X</motion.div>
-        </NavLink>
-        {path !== '/login' && (
-          <>
-            <div className='w-1/2 h-12'>
-              <SearchBar />
-            </div>
-            <div className='flex gap-8 justify-center'>
-              {isAuthenticated ? 
-                <div className="h-12 relative justify-self-start self-start">
-                  <UserNav currentUser={currentUser}/> 
-                </div>
-                : 
-                <NavLink
-                  to='/login'
-                  className="w-auto flex justify-center items-center h-full rounded-full text-1xl bg-secondary px-4 py-3 hover:bg-tertiary cursor-pointer">
-                  <span >Log in / Sign up</span>
-                </NavLink> 
-              }
-            </div>
-          </>
-        )}
 
     <nav className='sm:flex hidden fiexed top-0 w-full z-30'>
       <div className='w-full flex justify-between items-center mx-auto'>
@@ -297,7 +264,6 @@ const DesktopHeader = () => {
   )
 }
 
-
 const Header = () => {
   return (
     <>
@@ -307,4 +273,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header 

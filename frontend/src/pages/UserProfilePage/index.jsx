@@ -51,7 +51,7 @@ const UserProfilePage = () => {
       <div className={pageSettings.padding}>
         <div className='flex flex-col gap-5'>
           <div className='flex gap-5 items-center'>
-            <p className="text-2xl font-bold">{currentUser.username}</p>
+            <p className="text-2xl font-bold">{currentUser?.username}</p>
             <Rate defaultValue={4.5} disabled allowHalf />
           </div>
           <p className="text-four">Joined 2022 ( User infomation )</p>

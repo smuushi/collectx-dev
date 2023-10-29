@@ -128,8 +128,6 @@ const ProductList = ({name,list}) =>{
 }
 
 
-import { useSelector } from 'react-redux';
-
 const MainPage = () => {
 
 
