@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { message, Upload,Modal,Button } from 'antd';
 import { motion } from 'framer-motion';
+import { useDispatch } from 'react-redux';
+import { uploadUserProfilePic } from '../../redux_store/actions/usersActions';
+import { useSelector } from 'react-redux';
+
 
 const getBase64 = (img, callback) => {
     const reader = new FileReader();
@@ -24,6 +28,24 @@ const UploadAvatar = () => {
 
     const [loading, setLoading] = useState(false);
     const [imageUrl, setImageUrl] = useState();
+    let currentUserId = useSelector(state => state.auth.currentUser)
+
+
+    const dispatch = useDispatch();
+
+    const customRequest = ({ file, onSuccess, onError }) => {
+        dispatch(uploadUserProfilePic(currentUserId, file))
+        .then((updatedUser) => {
+            // You can access the updated user details here if needed.
+            setImageUrl(updatedUser.pfp_url);
+            onSuccess('File uploaded successfully.');
+        })
+        .catch(error => {
+            console.error('Error uploading file:', error);
+            onError(new Error('Error uploading file.'));
+        });
+    };
+
     const handleChange = (info) => {
         if (info.file.status === 'uploading') {
             setLoading(true);
@@ -56,18 +78,12 @@ const UploadAvatar = () => {
             listType="picture-circle"
             className="avatar-uploader"
             showUploadList={false}
-            action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+            customRequest={customRequest} // use the customRequest function
             beforeUpload={beforeUpload}
             onChange={handleChange}
         >
             {imageUrl ? (
-                <img
-                    src={imageUrl}
-                    alt="avatar"
-                    style={{
-                        width: '100%',
-                    }}
-                />
+                <img src={imageUrl} alt="avatar" style={{ width: '100%' }} />
             ) : (
                 uploadButton
             )}
@@ -80,6 +96,9 @@ const UserSetting = () => {
     const creditCard = [];
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setConfirmLoading] = useState(false);
+
+
+
 
     const showModal = () => {
         setIsModalOpen(true);

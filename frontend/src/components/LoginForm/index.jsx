@@ -31,10 +31,10 @@ const Login = ({setIsLogin}) => {
   
   const handleSignIn = async (e) => {
     e.preventDefault();
-    const data = await dispatch(signIn(userInfo));
-    //const data = fakeLogin();
-    message.success("Login success")
+    const data = await dispatch(signIn(userInfo))
 
+
+    data ? message.success("Login success") : message.error("Incorrect login")
 
     if (data) {
         navigate('/profile/own-cards')

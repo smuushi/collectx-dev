@@ -17,29 +17,44 @@ import {
   Route, 
   NavLink,
   useLocation,
+  useNavigate,
 } from 'react-router-dom';
 
-import avatar from "../../constants/testData/avatar.jpg"
+
 import userbackground from "../../constants/testData/userbackground.jpg"
 
 
 
 const UserProfilePage = () => {
   let authStatus = useSelector(state => state.auth)
+
+  const navigate = useNavigate();
+
+
   let allUsers = useSelector(state => state.users)
   let currentUser = allUsers[authStatus.currentUser]
-  //TODO: BUG- when refresh page, currentUser is undefined
-  //const currentUser = useSelector(state => state.profile.profile)
+  let avatar = currentUser?.pfp_url ? currentUser?.pfp_url : "https://i.imgflip.com/6n0xmt.png?a471624"
 
   const location = useLocation();
   const pathParts = location.pathname.split('/'); //split path by '/'
   const lastPath = pathParts[pathParts.length - 1];//get last part of path
   const [ active, setActive ] = useState(lastPath);
   useEffect(() => {
+    // if (authStatus.isLoggedIn === false) {
+    //   navigate("/login")
+    // }
     const pathParts = location.pathname.split('/'); //split path by '/'
     const lastPath = pathParts[pathParts.length - 1];//get last part of path
     setActive(lastPath);
   },[location])
+
+  if (authStatus.isLoggedIn === false) {
+    return(
+      <h3>please log in</h3>
+    )
+  }
+
+  
   return (
     <div className='w-full h-full relative'>
       <div className="w-full h-64 md:h-96 bg-userbackground relative mb-20">

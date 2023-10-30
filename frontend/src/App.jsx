@@ -19,7 +19,7 @@ import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { fetchUsers } from './redux_store/actions/usersActions';
-import { checkAuthentication } from './redux_store/actions/authActions'; // Adjust the path accordingly
+import { checkAuthentication, signOut } from './redux_store/actions/authActions'; // Adjust the path accordingly
 
 import { pageSettings } from './constants/style';
 
@@ -40,7 +40,11 @@ function App() {
     }
   }, [dispatch, token]);
 
+  const logoutDev = () => {
+    dispatch(signOut())
+  }
 
+  window.logoutDev = logoutDev;
 
   return (
     <div className={`w-full flex justify-center bg-white-light`}>
