@@ -14,8 +14,8 @@ import { FiLogOut } from "react-icons/fi"
 import { StockOutlined } from "@ant-design/icons";
 
 
-import { Navigation } from './../../constants';
-import { useDispatch, useSelector } from 'react-redux';
+
+
 import { logout } from '../../redux_store/actions/authActions';
 
 const userNav = [
