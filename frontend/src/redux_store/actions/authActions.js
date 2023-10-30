@@ -35,7 +35,6 @@ export const signIn = (userInfo) => async (dispatch) => {
   
   try {
     // debugger
-
       const response = await fetch('http://localhost:3000/v1/auth/login', {     
         method: 'POST',
         headers: {
@@ -62,7 +61,6 @@ export const signIn = (userInfo) => async (dispatch) => {
       })
 
       return data;
-
       } else {
       throw new Error(data.message);
       }
@@ -76,6 +74,34 @@ export const signIn = (userInfo) => async (dispatch) => {
   }
 
 };
+
+export const logout = () => async (dispatch) => {
+  try {
+    const refreshToken = localStorage.getItem('refreshToken');
+    const response = await fetch("http://localhost:3000/v1/auth/logout",{
+      method: "POST",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ refreshToken })
+    });
+    if (response.status === 204) {
+      // If the logout request is successful (status code 204), clear user data.
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      
+      dispatch({ type: 'LOGOUT_SUCCESS' });
+      dispatch({ type: 'REMOVE_PROFILE' })
+    } 
+    
+  } catch {
+    // Handle any network or request errors here.
+    // Dispatch an action to indicate logout failure.
+    dispatch({ type: 'LOGOUT_FAILURE' });
+  }
+}
+
 
 /**
  * Sign out action
@@ -97,6 +123,7 @@ export const signOut = () => async (dispatch) => {
     });
   }
 };
+
 
 export const checkAuthentication = () => async (dispatch) => {
   try {
