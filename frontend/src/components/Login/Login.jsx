@@ -15,7 +15,7 @@ const Login = () => {
         e.preventDefault()
         const data = dispatch(signIn(username, password));
         if (data) {
-            navigate('/profile')
+            navigate('/my-profile')
         }
     };
 

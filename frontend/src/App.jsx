@@ -22,6 +22,8 @@ import { fetchUsers } from './redux_store/actions/usersActions';
 import { checkAuthentication, signOut } from './redux_store/actions/authActions'; // Adjust the path accordingly
 
 import { pageSettings } from './constants/style';
+import UserProfileViewer from './pages/UserProfileViewer';
+import { fetchCards } from './redux_store/actions/cardActions';
 
 
 
@@ -35,6 +37,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchUsers());
+    dispatch(fetchCards())
     if (token) {
       dispatch(checkAuthentication());
     }
@@ -60,7 +63,8 @@ function App() {
             <Route path='/about' element={<AboutPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/browse' element={<BrowsePage />} />
-            <Route path='/profile/*' element={<UserProfilePage />} />
+            <Route path='/my-profile/*' element={<UserProfilePage />} />
+            <Route path='/profile/:userId/*' element={<UserProfileViewer />} />
             <Route path='/asset/:id' element={<AssetPage />} />
             <Route path='/filter' element={<FilterPage />} />
             <Route path='*' element={<h1>404 Page Not Found</h1>} />

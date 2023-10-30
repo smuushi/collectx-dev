@@ -22,22 +22,22 @@ const userNav = [
   {
     name : "my cards",
     icon : <GiCardBurn />,
-    url :  "/profile/own-cards"
+    url :  "/my-profile/own-cards"
   },
   {
     name : "Offer made",
     icon : <StockOutlined />,
-    url : "/profile/offer-made"
+    url : "/my-profile/offer-made"
   },
   {
     name : "Favorited",
     icon : <AiOutlineHeart />,
-    url : "/profile/favorited"
+    url : "/my-profile/favorited"
   },
   {
     name : "Settings",
     icon : <AiFillSetting />,
-    url : "/profile/setting"
+    url : "/my-profile/setting"
   }
 ]
 
@@ -252,25 +252,29 @@ const DesktopHeader = () => {
             <>
               <motion.div 
               className="rounded-full text-sm bg-black text-white font-bold px-8 py-3 cursor-pointer hover:bg-tertiary hover:text-black ease-linear duration-150">
-              <NavLink to="/postcard">
-                  Post My Card
-              </NavLink>
-            </motion.div>
+                <NavLink to="/postcard">
+                    Post My Card
+                </NavLink>
+              </motion.div>
 
             {isAuthenticated ? 
+            <>
               <div className="w-36 relative justify-self-start self-start">
                   <div className=" w-20 rounded-full text-1xl bg-secondary px-4 py-2 hover:bg-tertiary cursor-pointer">
                       <span onClick={logoutClick}>Logout</span>
                   </div>
               </div>
-              : 
-              <NavLink
-                to='/login'
-                className="w-36 relative justify-self-start self-start flex justify-end ">
-                  <div className=" w-20 rounded-full text-1xl bg-secondary px-4 py-2 hover:bg-tertiary cursor-pointer">
-                      <span >Log in</span>
-                  </div>
-              </NavLink>  
+            </>
+              :
+              <> 
+                <NavLink
+                  to='/login'
+                  className="w-36 relative justify-self-start self-start flex justify-end ">
+                    <div className=" w-20 rounded-full text-1xl bg-secondary px-4 py-2 hover:bg-tertiary cursor-pointer">
+                        <span >Log in</span>
+                    </div>
+                </NavLink>  
+              </> 
             }
             </>
           )}

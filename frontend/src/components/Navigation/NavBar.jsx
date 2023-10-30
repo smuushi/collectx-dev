@@ -18,6 +18,8 @@ const NavBar = () => {
                     <div>
                         about
                     </div>
+                    
+
                 </div>
 
                 <NavLink to='/login'>

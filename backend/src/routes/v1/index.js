@@ -3,6 +3,8 @@ const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
 const docsRoute = require('./docs.route');
 const uploadRoute = require('./upload.route');
+const cardRoute = require('./card.route');
+
 
 const config = require('../../config/config');
 
@@ -21,6 +23,11 @@ const defaultRoutes = [
     path: '/profile',
     route: uploadRoute,
   },
+  {
+    path: '/cards',
+    route: cardRoute,
+  }
+  
 ];
 
 

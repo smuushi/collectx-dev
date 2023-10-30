@@ -12,6 +12,10 @@ export const Navigation = [
         name: "about",
         link: "/about",
     },
+    {
+        name: "my profile",
+        link: "/my-profile",
+    },
 
 ]
 
