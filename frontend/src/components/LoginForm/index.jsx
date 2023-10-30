@@ -1,14 +1,12 @@
-import React from 'react'
+import { signIn } from '../../redux_store/actions/authActions';
+import style from "../../style.module.scss"
+
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Space,Divider, } from 'antd';
+import { Space,Divider, message, } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ImGoogle } from "react-icons/im";
-
-
-import { signIn } from '../../redux_store/actions/authActions';
-
 
 const Login = ({setIsLogin}) => {
   const dispatch = useDispatch(); 
@@ -29,22 +27,78 @@ const Login = ({setIsLogin}) => {
     });
   };
 
+
+  
   const handleSignIn = async (e) => {
     e.preventDefault();
-    const data = await dispatch(signIn(userInfo));
+    const data = await dispatch(signIn(userInfo))
 
-    // let success = await data;
 
-    // debugger
+    data ? message.success("Login success") : message.error("Incorrect login")
+
+
+
     if (data) {
-        navigate('/profile')
+        navigate('/profile/own-cards')
     }
   };
 
+  /**
+   * Myles request a fake login function
+   */
+  const fakeLogin = () =>{
+  dispatch({
+      type: 'CREATE_ACCOUNT_SUCCESS',
+      payload: {
+      email: 'admin@gmail.com',
+      password: userInfo.password,
+      username: "admin",
+      }
+  })
+  dispatch({
+      type: 'SIGN_IN_SUCCESS',
+      payload: {
+      message: "Login success",
+      user: {
+          role: "user",
+          isEmailVerified: false,
+          email: 'admin@gmail.com',
+          username: "admin",
+          id: '650ce9bdd8d81b6086ee0092',
+      }
+      },
+      user: '650ce9bdd8d81b6086ee0092',
+  })
+  dispatch({
+      type: 'SET_USER',
+      payload: [{
+      role: "user",
+      isEmailVerified: false,
+      email: 'admin@gmail.com',
+      username: "admin",
+      id: '650ce9bdd8d81b6086ee0092',
+      }]
+  })
+  dispatch({
+      type: 'UPDATE_USER',
+      payload: {
+      role: "user",
+      isEmailVerified: false,
+      email: 'admin@gmail.com',
+      username: "admin",
+      id: '650ce9bdd8d81b6086ee0092',
+      }
+  })
+  navigate('/profile/own-cards')
+
+  return "data!";
+}
+
+
   return (
     <div className='w-full h-full flex items-center gap-5'>
-      <div className='w-1/2 h-full flex flex-col justify-around border border-1'>
-        <div className='w-full px-12 flex flex-col '>
+      <div className='sm:flex hidden w-1/2 h-full flex-col justify-around border border-1'>
+        <div className=' w-full px-12 flex flex-col gap-5'>
             <h1 className='text-center text-2xl font-bold tracking-widest'>Hello Friend !</h1>
             <div className='text-center text-md'>
               <p>Hello new friend!</p>
@@ -66,19 +120,29 @@ const Login = ({setIsLogin}) => {
         </div>
 
       </div>
-      <form className='h-full w-1/2 flex justify-center items-center'>
+      <form className='h-full w-full sm:w-1/2 flex flex-col  justify-center gap-12 items-center'>
+        <div className=''>
+          <h1 className='text-center text-2xl font-bold tracking-widest'>Welcome Back !</h1>
+        </div>
         <Space direction="vertical" size="large">
+          
           <div className=''>
             <label className='font-mainPageFont tracking-wider'>Email</label>
-            <input name='email' className='px-5' type="text" onChange={onChange}/>
-            
+
+            <input name='email' className={`${style.input} px-5 h-12`} type="text" onChange={onChange}/>
+
           </div>
           <div>
             <label className='tracking-wider'>Password</label>
-            <input name='password' className='px-5' type="password" onChange={onChange}/>
+            <input name='password' className={`${style.input} px-5 h-12`} type="password" onChange={onChange}/>
           </div>
           <div>
             {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
+          </div>
+          <div className='flex sm:hidden'>
+            <p className='text-sm'>
+              Dont have account? <span className='text-[#E4405F] cursor-pointer underline' onClick={() => {setIsLogin(false)}}>Join us</span>
+            </p>
           </div>
           <motion.div 
             whileTap={{ scale: 0.9 }}

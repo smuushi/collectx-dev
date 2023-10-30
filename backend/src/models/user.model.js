@@ -44,6 +44,12 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+
+    pfp_url: {
+      type: String,
+      default: null,
+    },
+
   },
   {
     timestamps: true,

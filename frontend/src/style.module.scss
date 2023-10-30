@@ -7,7 +7,7 @@ $color-UIBackground: $color-blue;
 $font-family : 'Courier New', Courier, monospace;
 
 
-input{
+.input{
     width: 100%;
     height: 3vh;
     background-color: white;
@@ -24,48 +24,43 @@ input{
     }
 }
 
+.grid{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 0.5rem;
+    margin: 1rem;
 
-.shoppingBtn{
-    position: relative;
-    padding: 10px 25px;
-    border-top-right-radius: 25px;
-    border-bottom-left-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    box-sizing: border-box;
-    font-size: 1.2em;
-    cursor:pointer;
-    transition: all 0.5s;
+    @media (max-width: 1536px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 480px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
 
-    &:after,&:before{
-        content:" ";
-        width:10px;
-        height:10px;
-        position:absolute;
-        border :0px solid #fff;
-        transition:all 0.5s;
-    }
 
-    &:after{
-        top:-2px;
-        left:-2px;
-        border-top:3px solid $color-UIBackground;
-        border-left:3px solid $color-UIBackground;
-    }
-        
-    &:before{
-        bottom:-2px;
-        right:-2px;
-        border-bottom:3px solid $color-UIBackground;
-        border-right:3px solid $color-UIBackground;
-    }
+.name{
+	font-size: 18px;
+	color: #ffffff;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
 
-    &:hover{
-        border-radius: 0;
-        &:before,&:after{
-            width:101%;
-            height:101%;
-          // border-color:white;
-        }
+    ::before{
+        content: '';
+        position: absolute;
+        left:0;
+        bottom: -10px;
+        background-color: #e91e63;
+        height: 2px;
+        box-sizing: border-box;
+        width: 50px;
     }
-    
 }

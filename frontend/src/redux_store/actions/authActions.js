@@ -74,6 +74,7 @@ export const signIn = (userInfo) => async (dispatch) => {
   }
 
 };
+
 export const logout = () => async (dispatch) => {
   try {
     const refreshToken = localStorage.getItem('refreshToken');
@@ -100,6 +101,29 @@ export const logout = () => async (dispatch) => {
     dispatch({ type: 'LOGOUT_FAILURE' });
   }
 }
+
+
+/**
+ * Sign out action
+ * @returns 
+ */
+export const signOut = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: 'SIGN_OUT_SUCCESS',
+      payload : "Successfully signed out"
+    });
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('userProfile');
+  } catch (error) {
+    dispatch({
+      type: 'SIGN_OUT_FAILURE',
+      payload: error.message,
+    });
+  }
+};
+
 
 export const checkAuthentication = () => async (dispatch) => {
   try {
