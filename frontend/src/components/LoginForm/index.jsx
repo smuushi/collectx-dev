@@ -39,7 +39,7 @@ const Login = ({setIsLogin}) => {
 
 
     if (data) {
-        navigate('/profile/own-cards')
+        navigate('/my-profile/own-cards')
     }
   };
 
@@ -89,7 +89,7 @@ const Login = ({setIsLogin}) => {
       id: '650ce9bdd8d81b6086ee0092',
       }
   })
-  navigate('/profile/own-cards')
+  navigate('/my-profile/own-cards')
 
   return "data!";
 }

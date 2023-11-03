@@ -12,10 +12,6 @@ export const Navigation = [
         name: "about",
         link: "/about",
     },
-    {
-        name: "my profile",
-        link: "/my-profile",
-    },
 
 ]
 
@@ -32,6 +28,10 @@ export const userNavigation = [
     {
         name: "Favorited",
         url : "favorited"
+    },
+    {
+        name: "Messages",
+        url : "messages"
     },
     {
         name: "Settings",

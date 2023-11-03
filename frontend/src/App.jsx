@@ -7,7 +7,10 @@ import {
   FilterPage,
   LoginPage,
   MainPage,
+  SearchResult,
   UserProfilePage,
+  UserProfileViewer,
+  NoFound404,
 } from './pages';
 
 import{
@@ -16,13 +19,9 @@ import{
 } from './components';
 
 import { useEffect } from 'react';
-
 import { useDispatch } from 'react-redux';
 import { fetchUsers } from './redux_store/actions/usersActions';
 import { checkAuthentication, signOut } from './redux_store/actions/authActions'; // Adjust the path accordingly
-
-import { pageSettings } from './constants/style';
-import UserProfileViewer from './pages/UserProfileViewer';
 import { fetchCards } from './redux_store/actions/cardActions';
 
 
@@ -50,31 +49,26 @@ function App() {
   window.logoutDev = logoutDev;
 
   return (
-    <div className={`w-full flex justify-center bg-white-light`}>
-      <div className='w-full min-h-screen relative flex flex-col gap-8'>
-
-        <div className={`${pageSettings.padding} realtive w-full sm:h-36 h-16 flex sm:items-center items-end`}>
-          <Header />
-        </div>
-        
-        <main className='realtive h-auto '>
+    <div className="realtive w-full min-h-screen flex flex-col gap-8">
+        <Header />
+        <main className='flex-1 realtive h-auto'>
           <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/about' element={<AboutPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/browse' element={<BrowsePage />} />
+            <Route path='/search' element={<SearchResult />} />
             <Route path='/my-profile/*' element={<UserProfilePage />} />
             <Route path='/profile/:userId/*' element={<UserProfileViewer />} />
             <Route path='/asset/:id' element={<AssetPage />} />
             <Route path='/filter' element={<FilterPage />} />
-            <Route path='*' element={<h1>404 Page Not Found</h1>} />
+            <Route path='*' element={<NoFound404 />} />
           </Routes>
         </main>
         
         <footer className='w-screen md:w-full bg-[#24262b]'>
           <Footer />
         </footer>
-      </div>
     </div>
   )
 }

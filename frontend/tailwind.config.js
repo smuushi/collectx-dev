@@ -27,7 +27,10 @@ export default {
         "blue-deep": "00008B",
         "blue-light": "#98c1d9",
         "blue-lighter": "#e0fbfc",
-        "black-light": "#293241",
+        "black-light": "#293241",  
+        'green': '#1b5f5e',
+        'yellow' : '#feb15f',
+        "accent": "#A90D0D",
       },
       screens: {
         'xs': '320px',
