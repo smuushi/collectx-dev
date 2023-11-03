@@ -4,37 +4,46 @@ import { signOut } from '../../redux_store/actions/authActions';
 import SearchBar from './../SearchBar/index';
 import { useSelector,useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { NavLink,useLocation } from 'react-router-dom';
 import { Drawer, message } from 'antd';
-import { Navigation } from './../../constants';
-import { useSelector } from 'react-redux';
 import { AiFillSetting,AiOutlineHeart,AiOutlineMenu,AiOutlineLogin } from "react-icons/ai";
 import { GiCardBurn } from "react-icons/gi"
 import { BsPersonVcard } from "react-icons/bs"
 import { FiLogOut } from "react-icons/fi"
-import { StockOutlined } from "@ant-design/icons";
+import { StockOutlined,MessageOutlined } from "@ant-design/icons";
+
+
+
+
+import { logout } from '../../redux_store/actions/authActions';
+import { pageSettings } from './../../constants/style';
 
 const userNav = [
   {
     name : "my cards",
     icon : <GiCardBurn />,
-    url :  "/profile/own-cards"
+    url :  "/my-profile/own-cards"
   },
   {
     name : "Offer made",
     icon : <StockOutlined />,
-    url : "/profile/offer-made"
+    url : "/my-profile/offer-made"
   },
   {
     name : "Favorited",
     icon : <AiOutlineHeart />,
-    url : "/profile/favorited"
+    url : "/my-profile/favorited"
+  },
+  {
+    name : "Messages",
+    icon : <MessageOutlined />,
+    url : "/my-profile/messages"
   },
   {
     name : "Settings",
     icon : <AiFillSetting />,
-    url : "/profile/setting"
+    url : "/my-profile/setting"
   }
 ]
 
@@ -94,7 +103,7 @@ const MobileGuestNav = () => {
     return (
       <NavLink
         to='/login'
-        className="w-36 relative justify-self-start self-start flex justify-end ">
+        className=" relative justify-self-start flex justify-end ">
           <AiOutlineLogin className='text-2xl'/>
       </NavLink>
     )
@@ -106,7 +115,7 @@ const MobileHeader = () => {
   const isAuthenticated = useSelector(state => state.auth.isLoggedIn); //TODO: change to true when auth is implemented
 
   return (
-    <div className='sm:hidden flex w-full justify-between items-center'>
+    <div className={`${pageSettings.padding} h-12 mt-6 sm:hidden flex w-full justify-between items-center`}>
       <NavLink to='/'>
         <p className='text-xl font-bold text-red-light'>Collect-X</p>
       </NavLink>
@@ -136,13 +145,13 @@ const UserNav = ({currentUser}) =>{
       <motion.nav 
           initial={false} 
           animate={isOpen ? "open" : "closed"} 
-          className="flex flex-col items-start justify-start gap-1">
+          className="flex flex-col items-start justify-start gap-1 ">
           
           <div className='w-36 xl:w-48 flex justify-end'>
             <motion.button 
                 whileTap={{ scale: 0.97 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className= "w-auto flex justify-center items-center h-full rounded-full text-1xl bg-secondary px-4 py-2 hover:bg-tertiary cursor-pointer">
+                className= "w-auto flex justify-center items-center h-full rounded-md text-1xl border  px-4 py-2 cursor-pointer">
                     <span>{currentUser.username}</span>
                     {/* <img src={user.avatar} alt="profile" className="rounded-full w-5 h-5"/> */}
             </motion.button>
@@ -150,12 +159,12 @@ const UserNav = ({currentUser}) =>{
           <motion.ul
             variants={dropdown.ulVariant}
             style={{ pointerEvents: isOpen ? "auto" : "none" }}
-            className="bg-white xl:w-48 flex flex-col gap-1 px-5 py-2 mt-5 border">
+            className="bg-white xl:w-48 flex flex-col gap-1 px-5 py-2 mt-5 border ">
             {userNav.map((nav,index) => (
                 <motion.li key={index} className={liStyle} variants={dropdown.itemVariant}>
                     <NavLink to={nav.url} className="flex gap-5"  onClick={()=>setIsOpen(false)}>
-                        <p>{nav.icon}</p>
-                        <span className="text-sm font-semibold">{nav.name}</span>
+                        <p className='text-black'>{nav.icon}</p>
+                        <span className="text-sm font-semibold text-black">{nav.name}</span>
                     </NavLink>
                 </motion.li>
             ))}
@@ -165,8 +174,8 @@ const UserNav = ({currentUser}) =>{
                   to="/" 
                   className="flex gap-5"
                   onClick={handleSignOut}>
-                  <p><FiLogOut /></p>
-                  <span className="text-sm font-semibold">Logout</span>
+                  <p className='text-black'><FiLogOut /></p>
+                  <span className="text-black text-sm font-semibold">Logout</span>
               </NavLink>
             </motion.li>
         </motion.ul>
@@ -177,128 +186,108 @@ const UserNav = ({currentUser}) =>{
 
 
 const DesktopHeader = () => {
-  const location = useLocation();
+
+  const location = useLocation(); //get the path
   const path = location.pathname;
 
-  const [active, setActive] = React.useState(path);
-  const [scrolled, setScrolled] = React.useState(false);
-  const isAuthenticated = useSelector(state => state.auth.isLoggedIn); //TODO: change to true when auth is implemented
-  // debugger
-  React.useEffect(() => {
-    setActive(path); // Update active path when path changes
+  const [ headerStyle, setHeaderStyle ] = useState("bg-none text-white");
+  const [ currentPath, setCurrentPath ] = useState(path); //set the active path
+  const [ showSearch, setShowSearch ] = useState(false); //set the active path
 
+  /**
+   * Listen to the scroll event
+   */
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setHeaderStyle('bg-white text-black'); 
+    } else {
+      setHeaderStyle('bg-none text-white');
+    }
 
-  const [active, setActive] = useState(path); // Active path state
-  const [scrolled, setScrolled] = useState(false); // Check if page has been scrolled
-  
+    if( window.scrollY > 100){
+      setShowSearch(true)
+    } else {
+      setShowSearch(false)
+    }
+  };
+
+  /**
+   * Add event listener when component mounts
+   */
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    setCurrentPath(path); // Update active path when path changes
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+  }, [path]);
+
   //User
   const isAuthenticated = useSelector(state => state.auth.isLoggedIn); //TODO: change to true when auth is implemented
   const authStatus = useSelector(state => state.auth)
-  console.log(authStatus)
   const allUsers = useSelector(state => state.users)
   const currentUser = allUsers[authStatus.currentUser]
-  // debugger
-  useEffect(() => {
-    setActive(path); // Update active path when path changes
-    // Handle scroll
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 10) {
-          setScrolled(true);
-      } else {
-          setScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [path]);
+  //Showing LOGO
+  const LOGO = () => (
+    <NavLink to={'/'} className='text-2xl font-bold'>
+      <motion.div 
+        whileHover={{scale:1.1}}
+        className={currentPath !== '/login' ? "" : "text-black"}
+        >Collect-X</motion.div>
+    </NavLink>
+  )
 
-  return (
-
-    <nav className={` sm:flex hidden w-full z-10 ${scrolled ? "shadow" : ""}`}>
-      <div className='w-full flex justify-between items-start'>
-        <NavLink to={'/'} className='xl:text-xl 2xl:text-2xl font-bold text-red-light'>
-          <motion.div whileHover={{scale:1.1}}>Collect-X</motion.div>
-        </NavLink>
-        {path !== '/login' && (
-          <>
-            <div className='w-1/2 h-12'>
-              <SearchBar />
-            </div>
-            <div className='flex gap-8 justify-center'>
-              {isAuthenticated ? 
-                <div className="h-12 relative justify-self-start self-start">
-                  <UserNav currentUser={currentUser}/> 
-                </div>
-                : 
-                <NavLink
-                  to='/login'
-                  className="w-auto flex justify-center items-center h-full rounded-full text-1xl bg-secondary px-4 py-3 hover:bg-tertiary cursor-pointer">
-                  <span >Log in / Sign up</span>
-                </NavLink> 
-              }
-            </div>
-          </>
-        )}
-
-    <nav className='sm:flex hidden fiexed top-0 w-full z-30'>
-      <div className='w-full flex justify-between items-center mx-auto'>
-        <div className='flex items-center'>
-          <NavLink to={'/'} className='text-2xl font-bold text-red-light'>
-            <motion.div whileHover={{scale:1.1}}>
-              Collect-X
-            </motion.div>
-          </NavLink>
-          
-          {path !== '/login' && path !== '/register' && path !== '/postcard' &&(
-            Navigation.map((item, index) => {
-              return (
-                <NavLink 
-                  key={index} 
-                  to={item.link} 
-                  className={`${active === item.link ? "text-primary" : "text-tertiary"} 
-                  text-xl font-bold hover:text-black ml-8`}>
-                  {item.name}
-                </NavLink>
-              )
-            })
-          )}
-        </div>
-        <div className='flex'>
-          {path !== '/login' && path !== '/register' && path !== '/postcard' &&(
-            <>
-              <motion.div 
-              className="rounded-full text-sm bg-black text-white font-bold px-8 py-3 cursor-pointer hover:bg-tertiary hover:text-black ease-linear duration-150">
-              <NavLink to="/postcard">
-                  Post My Card
-              </NavLink>
-            </motion.div>
-
-            {isAuthenticated ? 
-              <div className="w-36 relative justify-self-start self-start">
-                  {/* <UserNav />  */}
-              </div>
-              : 
-              <NavLink
-                to='/login'
-                className="w-36 relative justify-self-start self-start flex justify-end ">
-                  <div className=" w-20 rounded-full text-1xl bg-secondary px-4 py-2 hover:bg-tertiary cursor-pointer">
-                      <span >Log in</span>
-                  </div>
-              </NavLink>  
-            }
-            </>
-          )}
-        </div>
-
+  //Showing Navigation Bar
+  const NavigationBar = () => (
+    <nav className="flex gap-10 items-center text-lg tracking-wide font-sans">
+      <NavLink to="/vaultMyCard" className="">Vault my Cards</NavLink>
+      {isAuthenticated ?
+        <div className="h-12 relative justify-self-start self-start">
+        <UserNav currentUser={currentUser}/> 
       </div>
+      : 
+      <NavLink
+        to='/login'
+        className="w-auto flex justify-center items-center h-full rounded-md text-1xl px-4 py-3 border cursor-pointer">
+        <span >Log in / Sign up</span>
+      </NavLink> 
+      }
     </nav>
+  )
+
+  //If we are on the home page
+  if(currentPath === '/'){
+    return(
+      <header className={`z-10 fixed top-0 left-0 w-full ${pageSettings.padding} ${headerStyle} py-7 hidden md:flex items-center justify-between gap-10 duration-500`} >
+        <LOGO/>
+        {showSearch && (
+          <div className='flex-1 h-12 text-black'><SearchBar /></div>
+        )}
+        <NavigationBar/>
+      </header>
+    )
+  }
+
+  //If we are on the other pages
+  return(
+    <header className={`z-10 fixed top-0 left-0 w-full ${pageSettings.padding} bg-white py-7 hidden md:flex items-center justify-between gap-10 duration-500`} >
+      <LOGO/>
+      {currentPath !== '/login' &&(
+        <>
+          <div className='flex-1 h-12 text-black'>
+            <SearchBar />
+          </div>
+          <NavigationBar/>
+        </>
+      )}
+    </header>
   )
 }
 
-
 const Header = () => {
+
+
   return (
     <>
       <MobileHeader />
@@ -307,4 +296,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header 

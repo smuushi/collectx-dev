@@ -30,6 +30,10 @@ export const userNavigation = [
         url : "favorited"
     },
     {
+        name: "Messages",
+        url : "messages"
+    },
+    {
         name: "Settings",
         url : "setting"
     },

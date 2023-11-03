@@ -12,7 +12,7 @@ const Footer = () => {
   const companyul = [
     {
       name: "About Us",
-      link: "#"
+      link: "/about"
     },
     {
       name: "Our Services",

@@ -16,6 +16,10 @@ const profileReducer = (state = initialState, action) => {
             ...state,
             profile: action.payload,
         };
+        case 'REMOVE_PROFILE':
+        return {
+            profile: null
+        }
         default:
         return state;
     }
