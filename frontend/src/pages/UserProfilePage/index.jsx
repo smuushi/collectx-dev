@@ -2,6 +2,7 @@ import {
   UserFavorited,
   UserOfferMade,
   UserOwnCards,
+  UserMessage,
   UserSetting
 } from '../../components'
 import { pageSettings } from './../../constants/style';
@@ -17,46 +18,35 @@ import {
   Route, 
   NavLink,
   useLocation,
-  useNavigate,
 } from 'react-router-dom';
 
-
+//import avatar from "../../constants/testData/avatar.jpg"
 import userbackground from "../../constants/testData/userbackground.jpg"
 
 
 
 const UserProfilePage = () => {
   let authStatus = useSelector(state => state.auth)
-
-  const navigate = useNavigate();
-
-
   let allUsers = useSelector(state => state.users)
   let currentUser = allUsers[authStatus.currentUser]
-  let avatar = currentUser?.pfp_url ? currentUser?.pfp_url : "https://i.imgflip.com/6n0xmt.png?a471624"
-
+  //TODO: BUG- when refresh page, currentUser is undefined
+  //const currentUser = useSelector(state => state.profile.profile)
+  console.log("profile")
   const location = useLocation();
   const pathParts = location.pathname.split('/'); //split path by '/'
   const lastPath = pathParts[pathParts.length - 1];//get last part of path
   const [ active, setActive ] = useState(lastPath);
+
+  let avatar = currentUser?.pfp_url ? currentUser?.pfp_url : "https://i.imgflip.com/6n0xmt.png?a471624"
+
+
   useEffect(() => {
-    // if (authStatus.isLoggedIn === false) {
-    //   navigate("/login")
-    // }
     const pathParts = location.pathname.split('/'); //split path by '/'
     const lastPath = pathParts[pathParts.length - 1];//get last part of path
     setActive(lastPath);
   },[location])
-
-  if (authStatus.isLoggedIn === false) {
-    return(
-      <h3>please log in</h3>
-    )
-  }
-
-  
   return (
-    <div className='w-full h-full relative'>
+    <div className='w-full h-full relative mt-32'>
       <div className="w-full h-64 md:h-96 bg-userbackground relative mb-20">
         <div className="w-24 h-24 md:w-36 md:h-36 rounded-full shadow-card border border-white absolute -bottom-12 md:-bottom-16 left-8 md:left-64 lg:left-80 flex justify-center items-center bg-white" >
           <img src={avatar} alt="avatar" className="w-20 h-20 md:w-32 md:h-32 rounded-full object-cover" />
@@ -66,7 +56,7 @@ const UserProfilePage = () => {
       <div className={pageSettings.padding}>
         <div className='flex flex-col gap-5'>
           <div className='flex gap-5 items-center'>
-            <p className="text-2xl font-bold">{currentUser?.username}</p>
+            <p className="text-2xl font-bold">{currentUser.username}</p>
             <Rate defaultValue={4.5} disabled allowHalf />
           </div>
           <p className="text-four">Joined 2022 ( User infomation )</p>
@@ -102,6 +92,7 @@ const UserProfilePage = () => {
                 <Route path="/" element={<UserOwnCards/>}/>
                 <Route path="/favorited" element={<UserFavorited />}/>
                 <Route path="/offer-made" element={<UserOfferMade/>}/>
+                <Route path="/messages" element={<UserMessage/>}/>
                 <Route path="/own-cards" element={<UserOwnCards/>}/>
                 <Route path="/setting" element={<UserSetting/>}/>
             </Routes>

@@ -8,52 +8,33 @@ import { useSelector } from 'react-redux';
 import { Carousel,Space } from 'antd';
 import {ArrowRightOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
+import SearchBar from './../../components/SearchBar/index';
 
 const CarouselComponent = () => {
-  const contentStyle= {
-    margin: 0,
-    height: '320px',
-    color: 'black',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#E5E5E5',
-  };
-
 
   return (
-    <Carousel
-      autoplay
-    >
-      <div>
-        <div style={contentStyle}> 
-          <img 
-            className="w-full h-full object-contain"
-            src={pic2}
-            alt="img"
-          />
+    <div className="hidden md:flex">
+      <Carousel 
+        effect="fade" 
+        autoplay 
+        dots={false}
+        style={{
+            width:"100%",
+            height:"100%",
+            position:"absolute",
+            top:0,
+            left:0,
+            zIndex:-1
+        }}>
+        <div>
+            <div className=" bg-accent h-[1000px]"></div>
         </div>
-      </div>
-
-      <div>
-        <div style={contentStyle}>
-          <img 
-            className="w-full h-full object-contain"
-            src={pic1}
-            alt="img"
-          />
+        
+        <div>
+            <div className=" bg-green h-[1000px]"></div>
         </div>
-      </div>
-      <div>
-        <div style={contentStyle}>
-          <span className='font-bold text-xl'>advertisment 3</span>
-        </div>
-      </div>
-      <div>
-        <div style={contentStyle}>
-          <span className='font-bold text-xl'>advertisment 4</span>
-        </div>
-      </div>
-    </Carousel>
+      </Carousel>
+    </div>
   )
 }
 
@@ -127,29 +108,102 @@ const ProductList = ({name,list}) =>{
   )
 }
 
+const categories = [
+  {
+      name : 'Football Cards',
+      img : 'https://i.pinimg.com/564x/1f/6e/0e/1f6e0e2a1b2b2b0b0b0b0b0b0b0b0b0b.jpg',
+      url : '/result/felt-toys',    
+  },
+  {
+      name : 'Basketball Cards',
+      img : 'https://i.pinimg.com/564x/1f/6e/0e/1f6e0e2a1b2b2b0b0b0b0b0b0b0b0b0b.jpg',    
+      url : '/result/home-decorations',
+  },
+  {
+      name : 'Pokemon Cards',
+      img : 'https://i.pinimg.com/564x/1f/6e/0e/1f6e0e2a1b2b2b0b0b0b0b0b0b0b0b0b.jpg',    
+      url : '/result/miniature-landscapes',
+  },
+  {
+      name : 'Miscellaneous Cards',
+      img : 'https://i.pinimg.com/564x/1f/6e/0e/1f6e0e2a1b2b2b0b0b0b0b0b0b0b0b0b.jpg',    
+      url : '/result/gifts',
+  },
+  
+]
+const CategoryGrid = () => {
+  return (
+      <div className="flex flex-wrap gap-12 w-full">
+          {categories.map((category, index) => (
+              <NavLink to={category.url} key={index} className="w-64">
+                  <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-white rounded-lg overflow-hidden shadow-product hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                      <div className="p-4 text-center flex flex-col items-center gap-5">
+                          <div className='w-32 h-32 border'>Category picture</div>
+                          <h3 className="font-bold">{category.name}</h3>
+                      </div>
+                  </motion.div>
+              </NavLink>
+          ))}
+      </div>
+  );
+};
 
 const MainPage = () => {
 
-
+  //TODO: After login, we can recommend the product to user
   // let authStatus = useSelector(state => state.auth)
   // let allUsers = useSelector(state => state.users)
   // let currentUser = allUsers[authStatus.currentUser]
-  
-  // console.log(authStatus.isLoggedIn)
+
+  const tag = [
+    "Pokemon",
+    "Football",
+    "Yu-Gi-Oh",
+  ]
   return (
-    <div className={`${pageSettings.padding}`}>
-      <Space 
-        direction="vertical"
-        size="large"
-        style={{
-          display: 'flex',
-        }}>
+    <div className={`relative h-auto w-full ${pageSettings.padding} flex flex-col gap-16`}>
         <CarouselComponent />
-        <ProductList name="Your Recently Viewed Items" list={database_product_info.slice(0, 5)} />
-        <ProductList name="Your watched items" list={database_product_info.slice(6, 10)} />
-        <ProductList name="You might interest..." list={database_product_info.slice(11, 13)} />
-      </Space>
-      
+        <div className='h-auto md:h-[1000px] flex items-center'>
+          <div className='mt-[-100px] flex flex-col gap-10 w-full'>
+            <h1 className='text-white text-4xl font-bold'>Finding your Extreme card here</h1>
+            <div className='w-full md:w-1/2 h-16'>
+              <SearchBar color="text-white"/>
+            </div>
+            <div className='hidden md:flex gap-5'>
+              <p className=" text-white text-[1rem] font-semibold">Popular Tags: </p>
+              <div className='flex justify-center items-center gap-3 '>
+                  {tag.map((item,index) => (
+                    <NavLink 
+                      to={`/search/results?search=${item}`}
+                      key={index} 
+                      className="border rounded-[10px] px-3 py-1 text-[0.8rem] font-semibold text-white hover:bg-white hover:text-black select-none cursor-pointer duration-150">
+                      {item}
+                    </NavLink>
+                  ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={`relative w-full flex flex-col items-center my-16`}>
+          <p className='font-bold text-xl'>Hot Categories !</p>
+          <div className='w-full flex flex-wrap justify-start gap-5 mt-5'>
+              <CategoryGrid />
+          </div>
+        </div>
+        <div className={`relative w-full flex flex-col my-16`}>
+          <p className='font-bold text-xl'>Top seller</p>
+          <div className='w-full flex flex-wrap justify-start gap-5 mt-5'>
+              
+          </div>
+        </div>
+        <ProductList name="Recently Viewed & More " list={database_product_info.slice(0, 5)} />
+        <ProductList name="You might interest..." list={database_product_info.slice(6, 13)} />
+        <div className='w-full bg-[#FAF1E4] scroll-py-16'>
+          test
+        </div>
     </div>
 
 
