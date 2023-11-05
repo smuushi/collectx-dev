@@ -1,7 +1,9 @@
 import { Navigation } from './../../constants';
 import { dropdown } from '../../motion';
 import { signOut } from '../../redux_store/actions/authActions';
-import SearchBar from './../SearchBar/index';
+import SearchBar from '../SearchBar/index';
+import { category } from '../../constants';
+
 import { useSelector,useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react'
@@ -16,7 +18,6 @@ import { StockOutlined,MessageOutlined } from "@ant-design/icons";
 
 
 
-import { logout } from '../../redux_store/actions/authActions';
 import { pageSettings } from './../../constants/style';
 
 const userNav = [
@@ -193,7 +194,7 @@ const DesktopHeader = () => {
   const [ headerStyle, setHeaderStyle ] = useState("bg-none text-white");
   const [ currentPath, setCurrentPath ] = useState(path); //set the active path
   const [ showSearch, setShowSearch ] = useState(false); //set the active path
-
+  const [ showCategory, setShowCategory ] = useState(false); //set the active path
   /**
    * Listen to the scroll event
    */
@@ -209,6 +210,13 @@ const DesktopHeader = () => {
     } else {
       setShowSearch(false)
     }
+
+    if (window.scrollY > 200){
+      setShowCategory(true)
+    } else {
+      setShowCategory(false)
+    }
+
   };
 
   /**
@@ -259,28 +267,76 @@ const DesktopHeader = () => {
   //If we are on the home page
   if(currentPath === '/'){
     return(
-      <header className={`z-10 fixed top-0 left-0 w-full ${pageSettings.padding} ${headerStyle} py-7 hidden md:flex items-center justify-between gap-10 duration-500`} >
-        <LOGO/>
-        {showSearch && (
-          <div className='flex-1 h-12 text-black'><SearchBar /></div>
+      <header className={`z-10 fixed top-0 left-0 w-full py-7 hidden md:flex flex-col duration-500 ${headerStyle}`} >
+        <div className={` ${pageSettings.padding} w-full flex items-center justify-between gap-10`}>
+          <LOGO/>
+          {showSearch && (
+            <div className='flex-1 h-12 text-black'><SearchBar /></div>
+          )}
+          <NavigationBar/>
+        </div>
+        {showCategory && (
+          <motion.div 
+            initial={{ opacity: 0 , y:-25 }}
+            animate={{ opacity: 1 , y:0   }}
+            exit={{ opacity: 0 , y:-25 }}
+            transition={{ ease: 'linear'}}
+            className='w-full mt-5'>
+          
+            <hr />
+            <div className={`${pageSettings.padding} mt-5 flex justify-around `}>
+              {category.map((cat,index) => (
+                <NavLink to={`/search/${cat.name}`} key={index}>
+                    <h3 className='text-md tracking-wide font-semibold select-none cursor-pointer'>{cat.name}</h3>
+                </NavLink>
+              ))}
+            </div>
+          </motion.div>
         )}
-        <NavigationBar/>
+        
+      </header>
+    )
+  }
+
+  //If we are on the login page
+  if(currentPath === '/login'){
+    return(
+      <header className={`z-10 fixed top-0 left-0 w-full py-7 hidden md:flex flex-col duration-500 ${headerStyle}`} >
+        <div className={` ${pageSettings.padding} w-full flex items-center justify-between gap-10`}>
+          <LOGO/>
+        </div>
       </header>
     )
   }
 
   //If we are on the other pages
   return(
-    <header className={`z-10 fixed top-0 left-0 w-full ${pageSettings.padding} bg-white py-7 hidden md:flex items-center justify-between gap-10 duration-500`} >
-      <LOGO/>
-      {currentPath !== '/login' &&(
-        <>
-          <div className='flex-1 h-12 text-black'>
-            <SearchBar />
-          </div>
-          <NavigationBar/>
-        </>
-      )}
+    <header className={`z-10 fixed top-0 left-0 w-full py-7 hidden md:flex flex-col duration-500 bg-white`} >
+      <div className={` ${pageSettings.padding} w-full flex items-center justify-between gap-10`}>
+        <LOGO/>
+          <>
+            <div className='flex-1 h-12 text-black'>
+              <SearchBar />
+            </div>
+            <NavigationBar/>
+          </>
+      </div>
+      <motion.div 
+        initial={{ opacity: 0 , y:-25 }}
+        animate={{ opacity: 1 , y:0   }}
+        exit={{ opacity: 0 , y:-25 }}
+        transition={{ ease: 'linear'}}
+        className='w-full mt-5'>
+      
+        <hr />
+        <div className={`${pageSettings.padding} mt-5 flex justify-around `}>
+          {category.map((cat,index) => (
+            <NavLink to={`/search/?search=${cat.name}`} key={index}>
+                <h3 className='text-md tracking-wide font-semibold select-none cursor-pointer'>{cat.name}</h3>
+            </NavLink>
+          ))}
+        </div>
+      </motion.div>
     </header>
   )
 }

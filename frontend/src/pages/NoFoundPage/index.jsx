@@ -2,7 +2,9 @@ import React from 'react'
 
 const NoFound404 = () => {
   return (
-    <div>NoFound404</div>
+    <div className='h-screen flex justify-center items-center'>
+      <p className='text-4xl'> Opps, Something wrong!</p>
+    </div>
   )
 }
 

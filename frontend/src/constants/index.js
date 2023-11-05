@@ -15,6 +15,33 @@ export const Navigation = [
 
 ]
 
+export const category = [
+    {
+        name: "Football",
+        link: "/search/?search=football",
+    },
+    {
+        name: "Basketball",
+        link: "/search/?search=basketball",
+    },
+    {
+        name: "Baseball",
+        link: "/search/?search=baseball",
+    },
+    {
+        name: "Pokemon",
+        link: "/search/?search=pokemon",
+    },
+    {
+        name: "Hockey",
+        link: "/search/?search=hockey",
+    },
+    {
+        name: "Soccer",
+        link: "/search/?search=soccer",
+    },
+]
+
 
 export const userNavigation = [
     {
