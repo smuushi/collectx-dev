@@ -1,8 +1,9 @@
 import { pageSettings } from './../../constants/style';
 import { database_product_info } from "../../constants"
 import style from '../../style.module.scss'
-import { pic1,pic2 } from '../../assets';
+import { img_id23 } from '../../assets';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import { Carousel,Space } from 'antd';
@@ -11,7 +12,6 @@ import { NavLink } from 'react-router-dom';
 import SearchBar from './../../components/SearchBar/index';
 
 const CarouselComponent = () => {
-
   return (
     <div className="hidden md:flex">
       <Carousel 
@@ -26,12 +26,29 @@ const CarouselComponent = () => {
             left:0,
             zIndex:-1
         }}>
+          
         <div>
-            <div className=" bg-accent h-[1000px]"></div>
+            <div className=" bg-green h-[1000px] flex justify-end items-center px-96">
+              <motion.div
+                className='w-96'
+                initial={{ x: 0 }}
+                animate={{ 
+                    x:0,
+                    rotateY: 360 
+                  }}
+                transition={{
+                    duration: 2, 
+                    repeat: 1, 
+                  }}>
+                <motion.img src={img_id23} alt="img" className="rotate-12 object-contain scale-75" />
+              </motion.div>
+            </div>
         </div>
-        
+
         <div>
-            <div className=" bg-green h-[1000px]"></div>
+            <div className=" bg-accent h-[1000px] flex justify-end items-center px-96">
+              
+            </div>
         </div>
       </Carousel>
     </div>
@@ -185,18 +202,6 @@ const MainPage = () => {
                   ))}
               </div>
             </div>
-          </div>
-        </div>
-        <div className={`relative w-full flex flex-col items-center my-16`}>
-          <p className='font-bold text-xl'>Hot Categories !</p>
-          <div className='w-full flex flex-wrap justify-start gap-5 mt-5'>
-              <CategoryGrid />
-          </div>
-        </div>
-        <div className={`relative w-full flex flex-col my-16`}>
-          <p className='font-bold text-xl'>Top seller</p>
-          <div className='w-full flex flex-wrap justify-start gap-5 mt-5'>
-              
           </div>
         </div>
         <ProductList name="Recently Viewed & More " list={database_product_info.slice(0, 5)} />

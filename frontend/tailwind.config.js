@@ -23,6 +23,7 @@ export default {
         four: "#979797",
         "black-100": "#100d25",
         "black-200": "#090325",
+        "black-bg" : "#24262b",
         "white-100": "#f3f3f3",
         "blue-deep": "00008B",
         "blue-light": "#98c1d9",
