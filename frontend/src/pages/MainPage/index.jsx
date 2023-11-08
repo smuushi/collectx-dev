@@ -2,12 +2,12 @@ import { pageSettings } from './../../constants/style';
 import { database_product_info } from "../../constants"
 import style from '../../style.module.scss'
 import { img_id23 } from '../../assets';
+import { ProductCard,SearchBar } from '../../components';
 
 import { motion } from 'framer-motion';
 import { Carousel,Space } from 'antd';
 import {ArrowRightOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
-import SearchBar from './../../components/SearchBar/index';
 
 const CarouselComponent = () => {
   return (
@@ -72,18 +72,6 @@ const ProductList = ({name,list}) =>{
         </div>
     </NavLink>
   )
-  
-  const PCard = ({id, productName, productImg,category}) =>(
-        <NavLink to={`/asset/${id}`} className="h-auto w-24 sm:w-96 rounded-xl shadow-card flex flex-col overflow-hidden ">
-            <motion.div whileHover={{scale : 1.1}} className="w-full flex justify-center">
-                <img className="object-contain hover:object-scale-down" src={productImg[0]} alt="img" />
-            </motion.div>
-            <div className="w-full px-2 py-10 z-10 bg-white flex flex-col gap-3">
-                <p className="w-full text-sm font-semibold overflow-hidden text-ellipsis whitespace-nowrap">{productName}</p>
-                <p className="text-sm font-medium" >{category}</p>
-            </div>
-        </NavLink>
-  )
 
   const MobileList = ({list}) =>(
       <div className="block md:hidden">
@@ -99,7 +87,11 @@ const ProductList = ({name,list}) =>{
   const PCList = ({list}) =>(
       <div className="hidden md:block">
           <div className="flex flex-wrap justify-start gap-16">
-              {list.map((product,index) => <PCard key={index} id={product.id} productName={product.name} productImg={product.img} category={product.tag.Category}/>)}
+              {list.map((product,index) => 
+                <div key={index} className="w-24 sm:w-96">
+                  <ProductCard product={product}/>
+                </div>
+              )}
           </div>
       </div>
   )
@@ -122,49 +114,6 @@ const ProductList = ({name,list}) =>{
   </div>
   )
 }
-
-const categories = [
-  {
-      name : 'Football Cards',
-      img : 'https://i.pinimg.com/564x/1f/6e/0e/1f6e0e2a1b2b2b0b0b0b0b0b0b0b0b0b.jpg',
-      url : '/result/felt-toys',    
-  },
-  {
-      name : 'Basketball Cards',
-      img : 'https://i.pinimg.com/564x/1f/6e/0e/1f6e0e2a1b2b2b0b0b0b0b0b0b0b0b0b.jpg',    
-      url : '/result/home-decorations',
-  },
-  {
-      name : 'Pokemon Cards',
-      img : 'https://i.pinimg.com/564x/1f/6e/0e/1f6e0e2a1b2b2b0b0b0b0b0b0b0b0b0b.jpg',    
-      url : '/result/miniature-landscapes',
-  },
-  {
-      name : 'Miscellaneous Cards',
-      img : 'https://i.pinimg.com/564x/1f/6e/0e/1f6e0e2a1b2b2b0b0b0b0b0b0b0b0b0b.jpg',    
-      url : '/result/gifts',
-  },
-  
-]
-const CategoryGrid = () => {
-  return (
-      <div className="flex flex-wrap gap-12 w-full">
-          {categories.map((category, index) => (
-              <NavLink to={category.url} key={index} className="w-64">
-                  <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-white rounded-lg overflow-hidden shadow-product hover:shadow-lg transition-shadow duration-300 ease-in-out">
-                      <div className="p-4 text-center flex flex-col items-center gap-5">
-                          <div className='w-32 h-32 border'>Category picture</div>
-                          <h3 className="font-bold">{category.name}</h3>
-                      </div>
-                  </motion.div>
-              </NavLink>
-          ))}
-      </div>
-  );
-};
 
 const MainPage = () => {
 
@@ -192,7 +141,7 @@ const MainPage = () => {
               <div className='flex justify-center items-center gap-3 '>
                   {tag.map((item,index) => (
                     <NavLink 
-                      to={`/search/results?search=${item}`}
+                      to={`/search/?search=${item}`}
                       key={index} 
                       className="border rounded-[10px] px-3 py-1 text-[0.8rem] font-semibold text-white hover:bg-white hover:text-black select-none cursor-pointer duration-150">
                       {item}

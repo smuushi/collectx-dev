@@ -41,6 +41,9 @@ export const resultData = [
             Subject: "Lebron James"
 
         },
+        price: {
+            current : "1.28",
+        },
         details :{
             standard : "ERC-721 token on the blockchain",
             chain : "ethereum",
@@ -52,7 +55,11 @@ export const resultData = [
             img_id2,
             img_id3,
             img_id4
-        ]
+        ],
+        consumer : {
+            name : "John Doe",
+            isVerified : true,
+        }
     },
     {
         id : "2",
@@ -60,6 +67,9 @@ export const resultData = [
         tag: {
             Category : "Football Cards",
             Set : "Panini Prizm"
+        },
+        price: {
+            current : "1.28",
         },
         details :{
             standard : "ERC-721 token on the blockchain",
@@ -70,7 +80,11 @@ export const resultData = [
         img:[
             img_id2,
             img_id3,
-        ]
+        ],
+        consumer : {
+            name : "Echo",
+            isVerified : false,
+        }
     },
     {
         id : "3",
@@ -78,6 +92,9 @@ export const resultData = [
         tag: {
             Category : "Pokemon TCG",
             Set : "Base Set"
+        },
+        price: {
+            current : "68.9",
         },
         details :{
             standard : "ERC-721 token on the blockchain",
@@ -89,7 +106,11 @@ export const resultData = [
             img_id3,
             img_id4,
             img_id5
-        ]
+        ],
+        consumer : {
+            name : "John Doe",
+            isVerified : true,
+        }
     },
     {
         id : "4",
@@ -97,6 +118,9 @@ export const resultData = [
         tag: {
             Category : "Football Cards",
             Set : "Panini Prizm"
+        },
+        price: {
+            current : "6.28",
         },
         details :{
             standard : "ERC-721 token on the blockchain",
@@ -106,7 +130,11 @@ export const resultData = [
         },
         img:[
             img_id2
-        ]
+        ],
+        consumer : {
+            name : "Anthony",
+            isVerified : false,
+        }
     },
     {
         id : "5",
@@ -114,6 +142,9 @@ export const resultData = [
         tag: {
             Category : "Pokemon TCG",
             Set : "Base Set"
+        },
+        price: {
+            current : "5.28",
         },
         details :{
             standard : "ERC-721 token on the blockchain",
@@ -123,7 +154,11 @@ export const resultData = [
         },
         img:[
             img_id3
-        ]
+        ],
+        consumer : {
+            name : "John Doe",
+            isVerified : true,
+        }
     },
 ]
 
