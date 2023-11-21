@@ -10,8 +10,37 @@ import {ArrowRightOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
 
 const CarouselComponent = () => {
+  const tag = [
+    "Pokemon",
+    "Football",
+    "Yu-Gi-Oh",
+  ]
+  
   return (
     <div className="hidden md:flex">
+
+      <div className='h-auto md:h-[700px] 3xl:h-[1000px] flex items-center'>
+        <div className='mt-[-100px] flex flex-col gap-10 w-full'>
+          <h1 className='text-white text-4xl font-bold'>Finding your Extreme card here</h1>
+          <div className='w-full md:w-1/2 h-16'>
+            <SearchBar color="text-white"/>
+          </div>
+          <div className='hidden md:flex gap-5'>
+            <p className=" text-white text-[1rem] font-semibold">Popular Tags: </p>
+            <div className='flex justify-center items-center gap-3 '>
+                {tag.map((item,index) => (
+                  <NavLink 
+                    to={`/search/?search=${item}`}
+                    key={index} 
+                    className="border rounded-[10px] px-3 py-1 text-[0.8rem] font-semibold text-white hover:bg-white hover:text-black select-none cursor-pointer duration-150">
+                    {item}
+                  </NavLink>
+                ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       <Carousel 
         effect="fade" 
         autoplay 
@@ -26,9 +55,9 @@ const CarouselComponent = () => {
         }}>
           
         <div>
-            <div className=" bg-green h-[1000px] flex justify-end items-center px-96">
+            <div className=" bg-green h-auto md:h-[700px] 3xl:h-[1000px] flex justify-end items-center md:px-64 3xl:px-96">
               <motion.div
-                className='w-96'
+                className='w-96 hidden md:flex'
                 initial={{ x: 0 }}
                 animate={{ 
                     x:0,
@@ -44,7 +73,7 @@ const CarouselComponent = () => {
         </div>
 
         <div>
-            <div className=" bg-accent h-[1000px] flex justify-end items-center px-96">
+            <div className=" bg-accent h-auto md:h-[700px] 3xl:h-[1000px] flex justify-end items-center px-96">
               
             </div>
         </div>
@@ -86,9 +115,9 @@ const ProductList = ({name,list}) =>{
    */
   const PCList = ({list}) =>(
       <div className="hidden md:block">
-          <div className="flex flex-wrap justify-start gap-16">
+          <div className="flex flex-wrap justify-start gap-3 md:gap-8 2xl:gap-16">
               {list.map((product,index) => 
-                <div key={index} className="w-24 sm:w-96">
+                <div key={index} className="w-24 md:w-64 2xl:w-96">
                   <ProductCard product={product}/>
                 </div>
               )}
@@ -122,35 +151,11 @@ const MainPage = () => {
   // let allUsers = useSelector(state => state.users)
   // let currentUser = allUsers[authStatus.currentUser]
 
-  const tag = [
-    "Pokemon",
-    "Football",
-    "Yu-Gi-Oh",
-  ]
+
   return (
     <div className={`relative h-auto w-full ${pageSettings.padding} flex flex-col gap-16`}>
         <CarouselComponent />
-        <div className='h-auto md:h-[1000px] flex items-center'>
-          <div className='mt-[-100px] flex flex-col gap-10 w-full'>
-            <h1 className='text-white text-4xl font-bold'>Finding your Extreme card here</h1>
-            <div className='w-full md:w-1/2 h-16'>
-              <SearchBar color="text-white"/>
-            </div>
-            <div className='hidden md:flex gap-5'>
-              <p className=" text-white text-[1rem] font-semibold">Popular Tags: </p>
-              <div className='flex justify-center items-center gap-3 '>
-                  {tag.map((item,index) => (
-                    <NavLink 
-                      to={`/search/?search=${item}`}
-                      key={index} 
-                      className="border rounded-[10px] px-3 py-1 text-[0.8rem] font-semibold text-white hover:bg-white hover:text-black select-none cursor-pointer duration-150">
-                      {item}
-                    </NavLink>
-                  ))}
-              </div>
-            </div>
-          </div>
-        </div>
+
         <ProductList name="Recently Viewed & More " list={database_product_info.slice(0, 5)} />
         <ProductList name="You might interest..." list={database_product_info.slice(6, 13)} />
         <div className='w-full bg-[#FAF1E4] scroll-py-16'>

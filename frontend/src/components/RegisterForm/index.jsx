@@ -53,7 +53,7 @@ const Register = ({setIsLogin}) => {
 
   return (
     <div className='w-full h-full flex items-center gap-5'>
-      <form className='h-full w-full sm:w-1/2 flex flex-col justify-center gap-12 items-center'>
+      <form className='h-full w-full sm:w-1/2 flex flex-col justify-start md:justify-center gap-12 items-center'>
         <div className=''>
           <h1 className='text-center text-2xl font-bold tracking-widest'>Join us!</h1>
         </div>
