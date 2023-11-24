@@ -120,7 +120,7 @@ const Login = ({setIsLogin}) => {
         </div>
 
       </div>
-      <form className='h-full w-full sm:w-1/2 flex flex-col  justify-center gap-12 items-center'>
+      <form className='h-full w-full sm:w-1/2 flex flex-col justify-start md:justify-center gap-12 items-center'>
         <div className=''>
           <h1 className='text-center text-2xl font-bold tracking-widest'>Welcome Back !</h1>
         </div>
@@ -129,16 +129,33 @@ const Login = ({setIsLogin}) => {
           <div className=''>
             <label className='font-mainPageFont tracking-wider'>Email</label>
 
-            <input name='email' className={`${style.input} px-5 h-12`} type="text" onChange={onChange}/>
-
+            <input 
+              name='email' 
+              className={`${style.input} px-5 h-12 text-sm`} 
+              type="text" 
+              onChange={onChange} 
+              placeholder='example@gmail.com'
+            />
           </div>
           <div>
             <label className='tracking-wider'>Password</label>
-            <input name='password' className={`${style.input} px-5 h-12`} type="password" onChange={onChange}/>
+            <input 
+              name='password' 
+              className={`${style.input} px-5 h-12 text-sm`} 
+              type="password" 
+              onChange={onChange}
+            />
+            <div>
+              {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
+            </div>
+            <div className='w-full flex justify-end'>
+              <span className='text-sm underline mt-2 cursor-pointer'>Forgot password?</span>
+            </div>
           </div>
-          <div>
-            {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
-          </div>
+          
+
+          
+
           <div className='flex sm:hidden'>
             <p className='text-sm'>
               Dont have account? <span className='text-[#E4405F] cursor-pointer underline' onClick={() => {setIsLogin(false)}}>Join us</span>
@@ -153,7 +170,7 @@ const Login = ({setIsLogin}) => {
               onClick={handleSignIn}>Log In</button>
           </motion.div>
 
-          <Divider plain>Or</Divider>
+          <Divider plain><span className='text-[#909090]'>Or Sign in with</span></Divider>
           <div className='flex justify-center'>
             <motion.div
               whileTap={{ scale: 0.9 }}

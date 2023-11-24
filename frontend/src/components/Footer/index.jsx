@@ -68,7 +68,7 @@ const Footer = () => {
   
 
   return (
-    <div className={`${pageSettings.padding} w-full flex flex-col md:flex-row justify-start gap-8 md:gap-96 py-8 md:py-32 `} >
+    <div className={`${pageSettings.padding} w-full flex flex-col md:flex-row justify-start bg-[#24262b] gap-8 md:gap-96 py-8 md:py-32 `} >
       <div className='flex flex-col gap-6'>
         <h2 className={footerStyle.title}>Company</h2>
         <div className="text-white flex flex-col gap-5">

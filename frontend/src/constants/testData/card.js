@@ -26,6 +26,141 @@ import {
 
 } from "../../assets"
 
+export const resultData = [
+    {
+        id : "1",
+        name : "2011 Upper Deck All Time Greats #SJA8 Lebron James (BGS 8.5 NM-MT+)",
+        tag: {
+            Category : "Basketball Cards",
+            Set : "Upper Deck ALl Time Greats",
+            Number : "SJA8",
+            Year: "2011",
+            Grader: "BGS",
+            Serial : "0008276475",
+            Grade : "8.5 NM-MT+",
+            Subject: "Lebron James"
+
+        },
+        price: {
+            current : "1.28",
+        },
+        details :{
+            standard : "ERC-721 token on the blockchain",
+            chain : "ethereum",
+            contact_address : "0xd4ac...F6FA",
+            token_id : "105986...1283"
+        },
+        img:[
+            img_id1,
+            img_id2,
+            img_id3,
+            img_id4
+        ],
+        consumer : {
+            name : "John Doe",
+            isVerified : true,
+        }
+    },
+    {
+        id : "2",
+        name : "2018 Panini Prizm #102 Patrick Mahomes II (PSA 10 GEM MINT)",
+        tag: {
+            Category : "Football Cards",
+            Set : "Panini Prizm"
+        },
+        price: {
+            current : "1.28",
+        },
+        details :{
+            standard : "ERC-721 token on the blockchain",
+            chain : "ethereum",
+            contact_address : "0xd4ac...F6FA",
+            token_id : "847531...6064"
+        },
+        img:[
+            img_id2,
+            img_id3,
+        ],
+        consumer : {
+            name : "Echo",
+            isVerified : false,
+        }
+    },
+    {
+        id : "3",
+        name : "1996 Pokémon Japanese Base Set Holo Gyarados #130 (PSA 55990817)",
+        tag: {
+            Category : "Pokemon TCG",
+            Set : "Base Set"
+        },
+        price: {
+            current : "68.9",
+        },
+        details :{
+            standard : "ERC-721 token on the blockchain",
+            chain : "ethereum",
+            contact_address : "0xd4ac...F6FA",
+            token_id : "543136...0168"
+        },
+        img:[
+            img_id3,
+            img_id4,
+            img_id5
+        ],
+        consumer : {
+            name : "John Doe",
+            isVerified : true,
+        }
+    },
+    {
+        id : "4",
+        name : "2018 Panini Prizm #102 Patrick Mahomes II (PSA 10 GEM MINT)",
+        tag: {
+            Category : "Football Cards",
+            Set : "Panini Prizm"
+        },
+        price: {
+            current : "6.28",
+        },
+        details :{
+            standard : "ERC-721 token on the blockchain",
+            chain : "ethereum",
+            contact_address : "0xd4ac...F6FA",
+            token_id : "847531...6064"
+        },
+        img:[
+            img_id2
+        ],
+        consumer : {
+            name : "Anthony",
+            isVerified : false,
+        }
+    },
+    {
+        id : "5",
+        name : "2000 Pokémon Japanese Base Set Holo Gyarados #126 (PSA 55990817)",
+        tag: {
+            Category : "Pokemon TCG",
+            Set : "Base Set"
+        },
+        price: {
+            current : "5.28",
+        },
+        details :{
+            standard : "ERC-721 token on the blockchain",
+            chain : "ethereum",
+            contact_address : "0xd4ac...F6FA",
+            token_id : "543136...0168"
+        },
+        img:[
+            img_id3
+        ],
+        consumer : {
+            name : "John Doe",
+            isVerified : true,
+        }
+    },
+]
 
 export const database_product_info = [
     {

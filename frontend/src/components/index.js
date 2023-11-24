@@ -7,8 +7,12 @@ import UserFavorited from "./UserFavorited";
 import UserOfferMade from './UserOfferMade';
 import UserOwnCards from './UserOwnCards';
 import UserSetting from './UserSetting';
-import Asset from './Asset';
 import UserMessage from './UserMessage';
+import Asset from './Asset';
+import ProductCard from "./ProductCard";
+import FilterBar from "./FilterBar";
+import FilterResults from "./FilterResults";
+
 
 export { 
     LoginForm, 
@@ -17,9 +21,12 @@ export {
     Header, 
     Footer,
     Asset,
+    ProductCard,
     UserFavorited,
     UserOfferMade,
     UserOwnCards,
     UserMessage,
-    UserSetting
+    UserSetting,
+    FilterBar,
+    FilterResults,
 };

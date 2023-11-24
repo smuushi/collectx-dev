@@ -31,7 +31,6 @@ const UserProfilePage = () => {
   let currentUser = allUsers[authStatus.currentUser]
   //TODO: BUG- when refresh page, currentUser is undefined
   //const currentUser = useSelector(state => state.profile.profile)
-  console.log("profile")
   const location = useLocation();
   const pathParts = location.pathname.split('/'); //split path by '/'
   const lastPath = pathParts[pathParts.length - 1];//get last part of path

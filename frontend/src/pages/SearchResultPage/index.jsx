@@ -1,72 +1,66 @@
+import { FilterBar,FilterResults } from '../../components';
+import { pageSettings } from '../../constants/style';
 
 import { useSearchParams } from 'react-router-dom'
 import { useEffect, useState } from "react";
-import { pageSettings } from '../../constants/style';
-
-const Filter = () => {
-  const [searchParams] = useSearchParams();
-  const searchQuery = searchParams.get('search');
-
-  return (
-    <div className='w-[500px] rounded-md shadow-product'>
-      <div className='flex flex-col gap-5 p-5'>
-        <div className='flex flex-col gap-2'>
-          <div className='text-xl font-bold'>Filter</div>
-          <div className='text-sm'>Search: {searchQuery}</div>
-        </div>
-        <div className='flex flex-col gap-2'>
-          <div className='text-xl font-bold'>Sort</div>
-          <div className='text-sm'>Sort by: </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-const Result = () => {
-  const [searchParams] = useSearchParams();
-  const searchQuery = searchParams.get('search');
-  const [result, setResult] = useState([]);
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:3001/search?search=${searchQuery}`)
-  //     .then(res => res.json())
-  //     .then(data => setResult(data))
-  // }, [searchQuery])
-
-  return (
-    <div className='w-3/4'>
-      <div className='flex flex-col gap-5 p-5'>
-        <div className='flex flex-col gap-2'>
-          <div className='text-xl font-bold'>Result</div>
-          <div className='text-sm'>Search: {searchQuery}</div>
-        </div>
-        <div className='flex flex-col gap-2'>
-          <div className='text-xl font-bold'>Sort</div>
-          <div className='text-sm'>Sort by: </div>
-        </div>
-      </div>
-      <div className='flex flex-col gap-5 p-5'>
-        {result.map((item, index) => (
-          <div key={index} className='flex flex-col gap-2'>
-            <div className='text-xl font-bold'>{item.title}</div>
-            <div className='text-sm'>{item.description}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
+import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { 
+  Pagination, 
+} from 'antd';
 
 const SearchResult = () => {
-  const [searchParams] = useSearchParams();
-  const searchQuery = searchParams.get('search');
+  const [searchParams] = useSearchParams(); // get search params from url
+  const searchQuery = searchParams.get('search'); // get search result from url
+
+  const [tags, setTags] = useState([searchQuery]); // set tags for result
+  const [filter, setFilter] = useState([
+    {
+      title: 'Status',
+      options: [
+        {
+          name: 'Buy now',
+          value: false,
+        },
+        {
+          name: 'Pre-order',
+          value: false,
+        },
+        {
+          name: 'New release',
+          value: false,
+        }
+      ]
+    },
+    {
+      title: 'Seller type',
+      options: [
+        {
+          name: 'Verified store',
+          value: false,
+        },
+        {
+          name: 'Personal store',
+          value: false,
+        }
+      ]
+    },
+  ]); 
+  
+  // set filter for result
+  useEffect(() => {
+    const searchQuery = searchParams.get('search');
+    setTags([searchQuery, ...tags.slice(1)]);
+  }, [searchParams])
 
   return (
     <div className={`relative mt-56 w-full text-black ${pageSettings.padding}`}>
-      <div className='relative w-full border flex gap-5'>
-        <Filter />
-        <Result />
+      <div className='relative w-full flex gap-5'>
+        <FilterBar filter={filter} setFilter={setFilter} setTags = {setTags}/>
+        <FilterResults tags={tags} setFilter={setFilter} setTags = {setTags}/>
+      </div>
+      <div className='w-full flex justify-center my-10'>
+        <Pagination defaultCurrent={1} total={1} />
       </div>
     </div>
   )

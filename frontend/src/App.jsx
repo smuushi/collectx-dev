@@ -29,8 +29,8 @@ import { fetchCards } from './redux_store/actions/cardActions';
 
 function App() {
 
+  //Access token from local storage
   const dispatch = useDispatch();
-
   const token = localStorage.getItem('accessToken');
 
 
@@ -49,7 +49,7 @@ function App() {
   window.logoutDev = logoutDev;
 
   return (
-    <div className="realtive w-full min-h-screen flex flex-col gap-8">
+    <div className="relative w-full min-h-screen flex flex-col gap-8">
         <Header />
         <main className='flex-1 realtive h-auto'>
           <Routes>
@@ -66,9 +66,7 @@ function App() {
           </Routes>
         </main>
         
-        <footer className='w-screen md:w-full bg-[#24262b]'>
           <Footer />
-        </footer>
     </div>
   )
 }
