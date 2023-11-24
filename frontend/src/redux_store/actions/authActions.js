@@ -1,8 +1,10 @@
+import { API_BASE_URL } from "../../config";
+
 export const createAccount = (userInfo) => async (dispatch) => {
   //let sample = JSON.stringify({ username: username, password: password, email: [email] })
   // debugger
     try {                         
-      const response = await fetch('http://localhost:3000/v1/auth/register', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/v1/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +37,7 @@ export const signIn = (userInfo) => async (dispatch) => {
   
   try {
     // debugger
-      const response = await fetch('http://localhost:3000/v1/auth/login', {     
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/v1/auth/login`, {     
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -78,7 +80,7 @@ export const signIn = (userInfo) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   try {
     const refreshToken = localStorage.getItem('refreshToken');
-    const response = await fetch("http://localhost:3000/v1/auth/logout",{
+    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/v1/auth/logout`,{
       method: "POST",
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
@@ -127,7 +129,7 @@ export const signOut = () => async (dispatch) => {
 
 export const checkAuthentication = () => async (dispatch) => {
   try {
-    const response = await fetch('http://localhost:3000/v1/auth/verifyToken', {
+    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/v1/auth/verifyToken`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
       }

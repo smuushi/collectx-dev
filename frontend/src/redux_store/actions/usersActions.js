@@ -2,7 +2,7 @@
 export const fetchUsers = () => async (dispatch) => {
     try {
         // Assuming that fetching users is a GET request without a body
-        const response = await fetch('http://localhost:3000/v1/users'); 
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/v1/users`); 
 
         const data = await response.json();
         if (response.status === 200) {
@@ -33,7 +33,7 @@ export const uploadUserProfilePic = (userId, file) => async (dispatch) => {
         // Retrieve the token from local storage
         const token = localStorage.getItem('accessToken');
 
-        const response = await fetch(`http://localhost:3000/v1/profile/${userId}/pfp`, {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/v1/profile/${userId}/pfp`, {
             method: 'POST',
             body: formData,
             headers: {

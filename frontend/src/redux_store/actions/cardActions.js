@@ -2,7 +2,7 @@
 export const fetchCards = () => async (dispatch) => {
     try {
         // Assuming that fetching cards is a GET request without a body
-        const response = await fetch('http://localhost:3000/v1/cards'); 
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/v1/cards`); 
 
         const data = await response.json();
         if (response.status === 200) {
