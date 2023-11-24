@@ -3,11 +3,17 @@ import { database_product_info } from "../../constants"
 import style from '../../style.module.scss'
 import { img_id23 } from '../../assets';
 import { ProductCard,SearchBar } from '../../components';
+import { fetchCards } from '../../redux_store/actions/cardActions';
 
 import { motion } from 'framer-motion';
 import { Carousel,Space } from 'antd';
 import {ArrowRightOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
+import { 
+  useDispatch,
+  useSelector,
+} from 'react-redux';
+
 
 const CarouselComponent = () => {
   const tag = [
@@ -19,10 +25,10 @@ const CarouselComponent = () => {
   return (
     <div className="hidden md:flex">
 
-      <div className='h-auto md:h-[700px] 3xl:h-[1000px] flex items-center'>
+      <div className='h-auto md:h-[700px] 2xl:h-[1000px] flex items-center'>
         <div className='mt-[-100px] flex flex-col gap-10 w-full'>
           <h1 className='text-white text-4xl font-bold'>Finding your Extreme card here</h1>
-          <div className='w-full md:w-1/2 h-16'>
+          <div className='w-full h-16'>
             <SearchBar color="text-white"/>
           </div>
           <div className='hidden md:flex gap-5'>
@@ -55,7 +61,7 @@ const CarouselComponent = () => {
         }}>
           
         <div>
-            <div className=" bg-green h-auto md:h-[700px] 3xl:h-[1000px] flex justify-end items-center md:px-64 3xl:px-96">
+            <div className=" bg-green h-auto md:h-[700px] 2xl:h-[1000px] flex justify-end items-center md:px-64 3xl:px-96">
               <motion.div
                 className='w-96 hidden md:flex'
                 initial={{ x: 0 }}
@@ -73,7 +79,7 @@ const CarouselComponent = () => {
         </div>
 
         <div>
-            <div className=" bg-accent h-auto md:h-[700px] 3xl:h-[1000px] flex justify-end items-center px-96">
+            <div className=" bg-accent h-auto md:h-[700px] 2xl:h-[1000px] flex justify-end items-center px-96">
               
             </div>
         </div>
@@ -150,7 +156,11 @@ const MainPage = () => {
   // let authStatus = useSelector(state => state.auth)
   // let allUsers = useSelector(state => state.users)
   // let currentUser = allUsers[authStatus.currentUser]
-
+  const dispatch = useDispatch(); 
+  dispatch(fetchCards())
+  const cardStatus = useSelector(state => state.cards.status)
+  console.log(cardStatus)
+  
 
   return (
     <div className={`relative h-auto w-full ${pageSettings.padding} flex flex-col gap-16`}>
