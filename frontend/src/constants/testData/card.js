@@ -1,7 +1,6 @@
 import {
     img_id1,
     img_id2,
-    img_id3,
     img_id4,
     img_id5,
     img_id6,
@@ -53,8 +52,6 @@ export const resultData = [
         img:[
             img_id1,
             img_id2,
-            img_id3,
-            img_id4
         ],
         consumer : {
             name : "John Doe",
@@ -78,8 +75,8 @@ export const resultData = [
             token_id : "847531...6064"
         },
         img:[
-            img_id2,
-            img_id3,
+            img_id4,
+            img_id5,
         ],
         consumer : {
             name : "Echo",
@@ -103,9 +100,8 @@ export const resultData = [
             token_id : "543136...0168"
         },
         img:[
-            img_id3,
-            img_id4,
-            img_id5
+            img_id6,
+            img_id7,
         ],
         consumer : {
             name : "John Doe",
@@ -129,7 +125,8 @@ export const resultData = [
             token_id : "847531...6064"
         },
         img:[
-            img_id2
+            img_id8,
+            img_id9,
         ],
         consumer : {
             name : "Anthony",
@@ -153,7 +150,8 @@ export const resultData = [
             token_id : "543136...0168"
         },
         img:[
-            img_id3
+            img_id10,
+            img_id11,
         ],
         consumer : {
             name : "John Doe",
@@ -186,8 +184,6 @@ export const database_product_info = [
         img:[
             img_id1,
             img_id2,
-            img_id3,
-            img_id4
         ]
     },
     {
@@ -204,8 +200,8 @@ export const database_product_info = [
             token_id : "847531...6064"
         },
         img:[
-            img_id2,
-            img_id3,
+            img_id4,
+            img_id5,
         ]
     },
     {
@@ -222,9 +218,8 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id3,
-            img_id4,
-            img_id5
+            img_id6,
+            img_id7,
         ]
     },
     {
@@ -241,7 +236,8 @@ export const database_product_info = [
             token_id : "847531...6064"
         },
         img:[
-            img_id2
+            img_id8,
+            img_id9,
         ]
     },
     {
@@ -258,7 +254,8 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id3
+            img_id10,
+            img_id11,
         ]
     },
     {
@@ -275,7 +272,8 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id7
+            img_id12,
+            img_id13,
         ]
     },
     {
@@ -292,8 +290,8 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id7,
-            img_id8,
+            img_id14,
+            img_id15,
         ]
     },
     {
@@ -310,8 +308,8 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id9,
-            img_id10,
+            img_id16,
+            img_id17,
         ]
     },
     {
@@ -328,8 +326,8 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id11,
-            img_id12,
+            img_id18,
+            img_id19,
         ]
     },
     {
@@ -346,9 +344,8 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id13,
-            img_id14,
-            img_id15,
+            img_id20,
+            img_id21,
         ]
     },
     {
@@ -365,9 +362,8 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id16,
-            img_id17,
-            img_id18,
+            img_id22,
+            img_id23,
         ]
     },
     {
@@ -384,9 +380,7 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id19,
-            img_id20,
-            img_id21,
+            img_id24,
         ]
     },
     {

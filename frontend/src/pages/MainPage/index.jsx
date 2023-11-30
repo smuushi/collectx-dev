@@ -123,7 +123,7 @@ const ProductList = ({name,list}) =>{
       <div className="hidden md:block">
           <div className="flex flex-wrap justify-start gap-3 md:gap-8 2xl:gap-16">
               {list.map((product,index) => 
-                <div key={index} className="w-24 md:w-64 2xl:w-96">
+                <div key={index} className="w-24 md:w-64 2xl:w-80">
                   <ProductCard product={product}/>
                 </div>
               )}
@@ -168,9 +168,7 @@ const MainPage = () => {
 
         <ProductList name="Recently Viewed & More " list={database_product_info.slice(0, 5)} />
         <ProductList name="You might interest..." list={database_product_info.slice(6, 13)} />
-        <div className='w-full bg-[#FAF1E4] scroll-py-16'>
-          test
-        </div>
+
     </div>
 
 

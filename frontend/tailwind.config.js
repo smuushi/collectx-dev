@@ -26,6 +26,7 @@ export default {
         "black-bg" : "#24262b",
         "white-100": "#f3f3f3",
         "blue-deep": "00008B",
+        'luxury-gold': '#9c8c5b',
         "blue-light": "#98c1d9",
         "blue-lighter": "#e0fbfc",
         "black-light": "#293241",  
@@ -58,7 +59,8 @@ export default {
         button : "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;",
         buttonactive : "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px, rgba(0, 0, 0, 0.15) -1.95px -1.95px 2.6px;",
         btnActive : "rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;",
-        tag : "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;"
+        tag : "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;",
+        test: '0 0 15px 0 rgba(156, 140, 91, 0.5)'
       },
       screens: {
         'sm': '640px',

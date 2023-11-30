@@ -24,6 +24,11 @@ $font-family : 'Courier New', Courier, monospace;
     }
 }
 
+.outsideBorder{
+    
+    border-style: outset;
+}
+
 .grid{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
