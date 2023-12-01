@@ -9,9 +9,16 @@ import UserProfilePage from './UserProfilePage';
 import UserProfileViewer from "./UserProfileViewer";
 import GuestProfilePage from "./GuestProfilePage";
 import NoFound404 from "./NoFoundPage";
+import ServicePage from "./ServicePage";
+import PrivacyPolicyPage from "./PrivacyPolicy";
+import FAQPage from "./FAQ";
+import ShippingPage from "./ShippingPolicy";
 
 export {
     AboutPage,
+    ServicePage,
+    ShippingPage,
+    FAQPage,
     AssetPage,
     BrowsePage,
     FilterPage,
@@ -22,5 +29,6 @@ export {
     NoFound404,
     SearchResult,
     GuestProfilePage,
+    PrivacyPolicyPage
 }
 

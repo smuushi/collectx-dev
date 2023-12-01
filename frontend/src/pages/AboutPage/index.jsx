@@ -39,8 +39,7 @@ const AboutPage = () => {
             <div className="mx-auto max-w-2xl lg:mx-0">
               <h2 className="text-4xl font-bold tracking-tight text-black sm:text-6xl">About Us</h2>
               <p className="mt-6 text-lg leading-8 text-gray-500">
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-                fugiat veniam occaecat fugiat aliqua.
+              Welcome to CollectX, your premier destination for buying and selling trading cards in the digital age! We have revolutionized the trading card industry by combining the thrill of collecting with the efficiency of modern technology. At CardMarketplace, we provide a specialized online platform where enthusiasts and collectors can seamlessly buy and sell their favorite trading cards with ease.
               </p>
             </div>
             <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">

@@ -16,30 +16,30 @@ const Footer = () => {
     },
     {
       name: "Our Services",
-      link: "#"
+      link: "/services"
     },
     {
       name: "Privacy Policy",
-      link: "#"
+      link: "/privacypolicy"
     },
   ]
 
   const getHelpul = [
     {
       name: "FAQ",
-      link: "#"
+      link: "/FAQ"
     },
     {
       name: "Shipping policy",
-      link: "#"
+      link: "/shipping"
     },
     {
       name: "Vault card Policy",
-      link: "#"
+      link: "/cardpolicy"
     },
     {
       name: "Payment Options",
-      link: "#"
+      link: "/paymentoptions"
     }
   ]
 

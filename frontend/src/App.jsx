@@ -16,6 +16,10 @@ import {
   UserProfileViewer,
   GuestProfilePage,
   NoFound404,
+  ServicePage,
+  PrivacyPolicyPage,
+  ShippingPage,
+  FAQPage,
 } from './pages';
 
 import{
@@ -28,6 +32,8 @@ import { useDispatch } from 'react-redux';
 import { fetchUsers } from './redux_store/actions/usersActions';
 import { checkAuthentication, signOut } from './redux_store/actions/authActions'; // Adjust the path accordingly
 import { fetchCards } from './redux_store/actions/cardActions';
+import CardPolicyPage from './pages/CardPolicyPage';
+import PaymentOptionsPage from './pages/PaymentOptionsPage';
 
 
 function ScrollToTop() {
@@ -71,6 +77,12 @@ function App() {
           <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/about' element={<AboutPage />} />
+            <Route path='/services' element={<ServicePage />} />
+            <Route path='/privacypolicy' element={<PrivacyPolicyPage />} />
+            <Route path='/shipping' element={<ShippingPage />} />
+            <Route path='/cardpolicy' element={<CardPolicyPage />} />
+            <Route path='/paymentoptions' element={<PaymentOptionsPage />} />
+            <Route path='/FAQ' element={<FAQPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/browse' element={<BrowsePage />} />
             <Route path='/search' element={<SearchResult />} />
