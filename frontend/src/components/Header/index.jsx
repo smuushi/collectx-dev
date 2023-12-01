@@ -330,11 +330,11 @@ const DesktopHeader = () => {
       
         <hr />
         <div className={`${pageSettings.padding} mt-5 flex justify-around `}>
-          {category.map((cat,index) => (
+          {/* {category.map((cat,index) => (
             <NavLink to={`/search/?search=${cat.name}`} key={index}>
                 <h3 className='text-md tracking-wide font-semibold select-none cursor-pointer'>{cat.name}</h3>
             </NavLink>
-          ))}
+          ))} */}
         </div>
       </motion.div>
     </header>
