@@ -1,6 +1,7 @@
 import { resultData } from '../../constants/testData/card';
 
 import { useSearchParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 import { useEffect, useState, useRef } from "react";
 import { motion } from 'framer-motion';
 import { 
@@ -18,24 +19,27 @@ import { CheckCircleOutlined } from '@ant-design/icons';
 const Card = ({ product }) => {
     return (
     <div className='w-full flex justify-start gap-7 p-2'>
-        <div className='w-64 h-64'>
+        <div className='w-64'>
             <Image src={product.img[0]} alt='img' className='object-contain' />
         </div>
         <div className='flex-1 h-full flex flex-col gap-10'>
-            <div className='text-xl font-bold overflow-hidden text-ellipsis whitespace-nowrap'>{product.name}</div>
-            <div className='flex gap-7'>
-            <p>post by: <span className='font-semibold'>{product.consumer.name}</span></p>
-            {product.consumer.isVerified && 
-                <Tag icon={<CheckCircleOutlined />} color="#4CAF50">
-                Verified Store
-                </Tag>
-            } 
+            <NavLink 
+                to={`/asset/${product.id}`}
+                className='text-md md:text-xl font-bold overflow-hidden text-ellipsis md:whitespace-nowrap'>{product.name}</NavLink>
+            <div className='flex flex-col md:flex-row gap-2 md:gap-7'>
+                <div className='text-sm'>
+                    <span className='hidden md:block'>post by: </span>
+                    <NavLink to={`/guest-profile/${product.consumer.id}`} className='font-semibold'>{product.consumer.name}</NavLink>
+                </div>
+                {product.consumer.isVerified && 
+                    <Tag icon={<CheckCircleOutlined />} color="#4CAF50"> Verified Store</Tag>
+                } 
             </div>
 
             <div className="flex gap-3">
-            <p>market price:</p>
+            <p>Price:</p>
             {product.price && 
-            <span className='text-xl font-bold'>${product.price.current}</span>
+                <span className='text-xl font-bold'>${product.price.current}</span>
             }
             </div>
         </div>
@@ -117,9 +121,9 @@ const FilterResult = ({tags,setFilter,setTags}) => {
     // }, [searchQuery])
 
     return (
-    <div className='w-9/12 relative p-12 flex flex-col gap-10'>
+    <div className='w-full md:w-9/12 relative p-0 md:p-12 flex flex-col gap-10'>
         <div className='w-full flex justify-between'>
-        <div className='text-xl font-bold'>Search result for: "{searchQuery}"</div>
+        <div className='text-md md:text-xl font-bold'>Search result for: "{searchQuery}"</div>
         <div className='text-sm'>Found {result.length} results</div>
         </div>
         {tags.length !== 0 &&

@@ -7,6 +7,7 @@ import MainPage from "./MainPage";
 import SearchResult from "./SearchResultPage";
 import UserProfilePage from './UserProfilePage';
 import UserProfileViewer from "./UserProfileViewer";
+import GuestProfilePage from "./GuestProfilePage";
 import NoFound404 from "./NoFoundPage";
 
 export {
@@ -20,5 +21,6 @@ export {
     UserProfileViewer,
     NoFound404,
     SearchResult,
+    GuestProfilePage,
 }
 

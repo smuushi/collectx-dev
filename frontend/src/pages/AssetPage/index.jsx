@@ -8,7 +8,7 @@ const AssetPage = () => {
   
   
   return(
-      <div className={`${pageSettings.padding} flex justify-center mt-12 md:mt-64`}>
+      <div className={`${pageSettings.padding} flex justify-center mt-24 md:mt-64`}>
         <div className="w-full md:w-6/7 xl:w-10/12">
           <Asset id={id}/>
         </div>

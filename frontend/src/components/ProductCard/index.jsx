@@ -14,7 +14,7 @@ import { EffectFlip, Pagination, Navigation } from 'swiper/modules';
 
 const ProductCard = ({product}) => {
 
-    
+    console.log(product)
     const {id, name, img,tag} = product;
     return (
         <NavLink to={`/asset/${id}`} className="h-auto w-full">

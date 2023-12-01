@@ -3,6 +3,7 @@ import { dropdown } from '../../motion';
 import { signOut } from '../../redux_store/actions/authActions';
 import SearchBar from '../SearchBar/index';
 import { category } from '../../constants';
+import style from "../../style.module.scss"
 
 import { useSelector,useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
@@ -116,11 +117,10 @@ const MobileHeader = () => {
   const isAuthenticated = useSelector(state => state.auth.isLoggedIn); //TODO: change to true when auth is implemented
 
   return (
-    <div className={`${pageSettings.padding} h-12 mt-6 sm:hidden flex w-full justify-between items-center`}>
+    <div className={`${pageSettings.padding} ${style.glassmorphism} py-6 sm:hidden fixed top-0 z-10 flex w-full justify-between items-center`}>
       <NavLink to='/'>
         <p className='text-xl font-bold text-red-light'>Collect-X</p>
       </NavLink>
-      
       {isAuthenticated ? <MobileUserNav /> : <MobileGuestNav />}
     </div>
   )

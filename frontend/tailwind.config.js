@@ -25,7 +25,7 @@ export default {
         "black-200": "#090325",
         "black-bg" : "#24262b",
         "white-100": "#f3f3f3",
-        "blue-deep": "00008B",
+        "blue-deep": "#00008B",
         'luxury-gold': '#9c8c5b',
         "blue-light": "#98c1d9",
         "blue-lighter": "#e0fbfc",

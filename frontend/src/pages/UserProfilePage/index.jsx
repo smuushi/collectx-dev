@@ -45,7 +45,7 @@ const UserProfilePage = () => {
     setActive(lastPath);
   },[location])
   return (
-    <div className='w-full h-full relative mt-32'>
+    <div className='w-full h-full relative mt-16 md:mt-32'>
       <div className="w-full h-64 md:h-96 bg-userbackground relative mb-20">
         <div className="w-24 h-24 md:w-36 md:h-36 rounded-full shadow-card border border-white absolute -bottom-12 md:-bottom-16 left-8 md:left-64 lg:left-80 flex justify-center items-center bg-white" >
           <img src={avatar} alt="avatar" className="w-20 h-20 md:w-32 md:h-32 rounded-full object-cover" />
@@ -76,8 +76,8 @@ const UserProfilePage = () => {
                     <li key={index} onClick={() => setActive(nav.url)}>
                       <NavLink 
                           to={nav.url} 
-                          className={`${active === nav.url ? "text-black bg-slate-100" : "text-four hover:bg-slate-100 "}  rounded-lg h-10 p-2 flex gap-5 items-center cursor-pointer`}>
-                          <span className={`tracking-wider text-sm `}>{nav.name}</span>
+                          className={`${active === nav.url ? "text-black bg-slate-100" : "text-four hover:bg-slate-100 "}  rounded-lg h-10 px-2 flex gap-2 md:gap-5 items-center cursor-pointer`}>
+                          <span className={`tracking-wider text-sm w-24 flex justify-center`}>{nav.name}</span>
                       </NavLink>
                     </li>
                 ))}
