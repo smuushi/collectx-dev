@@ -78,7 +78,7 @@ const MobileUserNav = () => {
                 className="w-full rounded-md relative overflow-hidden shadow-list">
                 <div className="flex items-center gap-5 text-md justify-start px-4 py-3">
                   {item.icon}
-                  <span><BsPersonVcard/> {item.name}</span>
+                  <span> {item.name}</span>
                 </div>
               </NavLink>
             )
