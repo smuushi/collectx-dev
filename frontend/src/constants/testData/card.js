@@ -1,7 +1,6 @@
 import {
     img_id1,
     img_id2,
-    img_id3,
     img_id4,
     img_id5,
     img_id6,
@@ -53,11 +52,10 @@ export const resultData = [
         img:[
             img_id1,
             img_id2,
-            img_id3,
-            img_id4
         ],
         consumer : {
             name : "John Doe",
+            id: "test_id_1",
             isVerified : true,
         }
     },
@@ -78,11 +76,12 @@ export const resultData = [
             token_id : "847531...6064"
         },
         img:[
-            img_id2,
-            img_id3,
+            img_id4,
+            img_id5,
         ],
         consumer : {
             name : "Echo",
+            id: "test_id_2",
             isVerified : false,
         }
     },
@@ -103,12 +102,12 @@ export const resultData = [
             token_id : "543136...0168"
         },
         img:[
-            img_id3,
-            img_id4,
-            img_id5
+            img_id6,
+            img_id7,
         ],
         consumer : {
             name : "John Doe",
+            id: "test_id_1",
             isVerified : true,
         }
     },
@@ -129,10 +128,12 @@ export const resultData = [
             token_id : "847531...6064"
         },
         img:[
-            img_id2
+            img_id8,
+            img_id9,
         ],
         consumer : {
             name : "Anthony",
+            id: "test_id_3",
             isVerified : false,
         }
     },
@@ -153,10 +154,12 @@ export const resultData = [
             token_id : "543136...0168"
         },
         img:[
-            img_id3
+            img_id10,
+            img_id11,
         ],
         consumer : {
             name : "John Doe",
+            id: "test_id_1",
             isVerified : true,
         }
     },
@@ -175,7 +178,6 @@ export const database_product_info = [
             Serial : "0008276475",
             Grade : "8.5 NM-MT+",
             Subject: "Lebron James"
-
         },
         details :{
             standard : "ERC-721 token on the blockchain",
@@ -183,12 +185,18 @@ export const database_product_info = [
             contact_address : "0xd4ac...F6FA",
             token_id : "105986...1283"
         },
+        price: {
+            current : "1.28",
+        },
         img:[
             img_id1,
             img_id2,
-            img_id3,
-            img_id4
-        ]
+        ],
+        consumer : {
+            name : "John Doe",
+            id: "test_id_1",
+            isVerified : true,
+        }
     },
     {
         id : "2",
@@ -197,6 +205,9 @@ export const database_product_info = [
             Category : "Football Cards",
             Set : "Panini Prizm"
         },
+        price: {
+            current : "1.28",
+        },
         details :{
             standard : "ERC-721 token on the blockchain",
             chain : "ethereum",
@@ -204,9 +215,14 @@ export const database_product_info = [
             token_id : "847531...6064"
         },
         img:[
-            img_id2,
-            img_id3,
-        ]
+            img_id4,
+            img_id5,
+        ],
+        consumer : {
+            name : "Echo",
+            id: "test_id_2",
+            isVerified : false,
+        }
     },
     {
         id : "3",
@@ -215,6 +231,9 @@ export const database_product_info = [
             Category : "Pokemon TCG",
             Set : "Base Set"
         },
+        price: {
+            current : "1.28",
+        },
         details :{
             standard : "ERC-721 token on the blockchain",
             chain : "ethereum",
@@ -222,10 +241,14 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id3,
-            img_id4,
-            img_id5
-        ]
+            img_id6,
+            img_id7,
+        ],
+        consumer : {
+            name : "John Doe",
+            id: "test_id_1",
+            isVerified : true,
+        }
     },
     {
         id : "4",
@@ -234,6 +257,9 @@ export const database_product_info = [
             Category : "Football Cards",
             Set : "Panini Prizm"
         },
+        price: {
+            current : "1.28",
+        },
         details :{
             standard : "ERC-721 token on the blockchain",
             chain : "ethereum",
@@ -241,8 +267,14 @@ export const database_product_info = [
             token_id : "847531...6064"
         },
         img:[
-            img_id2
-        ]
+            img_id8,
+            img_id9,
+        ],
+        consumer : {
+            name : "Anthony",
+            id: "test_id_3",
+            isVerified : false,
+        }
     },
     {
         id : "5",
@@ -251,6 +283,9 @@ export const database_product_info = [
             Category : "Pokemon TCG",
             Set : "Base Set"
         },
+        price: {
+            current : "1.28",
+        },
         details :{
             standard : "ERC-721 token on the blockchain",
             chain : "ethereum",
@@ -258,8 +293,14 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id3
-        ]
+            img_id10,
+            img_id11,
+        ],
+        consumer : {
+            name : "John Doe",
+            id: "test_id_1",
+            isVerified : true,
+        }
     },
     {
         id : "6",
@@ -268,6 +309,9 @@ export const database_product_info = [
             Category : "Pokemon TCG",
             Set : "Base Set"
         },
+        price: {
+            current : "1.28",
+        },
         details :{
             standard : "ERC-721 token on the blockchain",
             chain : "ethereum",
@@ -275,8 +319,14 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id7
-        ]
+            img_id12,
+            img_id13,
+        ],
+        consumer : {
+            name : "John Doe",
+            id: "test_id_1",
+            isVerified : true,
+        }
     },
     {
         id : "7",
@@ -285,6 +335,9 @@ export const database_product_info = [
             Category : "Pokemon TCG",
             Set : "Base Set"
         },
+        price: {
+            current : "1.28",
+        },
         details :{
             standard : "ERC-721 token on the blockchain",
             chain : "ethereum",
@@ -292,9 +345,14 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id7,
-            img_id8,
-        ]
+            img_id14,
+            img_id15,
+        ],
+        consumer : {
+            name : "John Doe",
+            id: "test_id_1",
+            isVerified : true,
+        }
     },
     {
         id : "8",
@@ -303,6 +361,9 @@ export const database_product_info = [
             Category : "Pokemon TCG",
             Set : "Base Set"
         },
+        price: {
+            current : "1.28",
+        },
         details :{
             standard : "ERC-721 token on the blockchain",
             chain : "ethereum",
@@ -310,9 +371,14 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id9,
-            img_id10,
-        ]
+            img_id16,
+            img_id17,
+        ],
+        consumer : {
+            name : "John Doe",
+            id: "test_id_1",
+            isVerified : true,
+        }
     },
     {
         id : "9",
@@ -321,6 +387,9 @@ export const database_product_info = [
             Category : "Pokemon TCG",
             Set : "Base Set"
         },
+        price: {
+            current : "1.28",
+        },
         details :{
             standard : "ERC-721 token on the blockchain",
             chain : "ethereum",
@@ -328,9 +397,14 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id11,
-            img_id12,
-        ]
+            img_id18,
+            img_id19,
+        ],
+        consumer : {
+            name : "John Doe",
+            id: "test_id_1",
+            isVerified : true,
+        }
     },
     {
         id : "10",
@@ -339,6 +413,9 @@ export const database_product_info = [
             Category : "Boxing cards",
             Set : "AW Sports"
         },
+        price: {
+            current : "1.28",
+        },
         details :{
             standard : "ERC-721 token on the blockchain",
             chain : "polygon",
@@ -346,10 +423,14 @@ export const database_product_info = [
             token_id : "543136...0168"
         },
         img:[
-            img_id13,
-            img_id14,
-            img_id15,
-        ]
+            img_id20,
+            img_id21,
+        ],
+        consumer : {
+            name : "John Doe",
+            id: "test_id_1",
+            isVerified : true,
+        }
     },
     {
         id : "11",
@@ -358,43 +439,8 @@ export const database_product_info = [
             Category : "Boxing cards",
             Set : "AW Sports"
         },
-        details :{
-            standard : "ERC-721 token on the blockchain",
-            chain : "polygon",
-            contact_address : "0xd4ac...dcAD",
-            token_id : "543136...0168"
-        },
-        img:[
-            img_id16,
-            img_id17,
-            img_id18,
-        ]
-    },
-    {
-        id : "12",
-        name : "1972 Topps #122 Bobby Orr (PSA 8 NM-MT)",
-        tag: {
-            Category : "Hockey cards",
-            Set : "AW Sports"
-        },
-        details :{
-            standard : "ERC-721 token on the blockchain",
-            chain : "polygon",
-            contact_address : "0xd4ac...dcAD",
-            token_id : "543136...0168"
-        },
-        img:[
-            img_id19,
-            img_id20,
-            img_id21,
-        ]
-    },
-    {
-        id : "13",
-        name : "1972 Topps #123 Bobby Orr (PSA 8 NM-MT)",
-        tag: {
-            Category : "Hockey cards",
-            Set : "AW Sports"
+        price: {
+            current : "1.28",
         },
         details :{
             standard : "ERC-721 token on the blockchain",
@@ -405,7 +451,11 @@ export const database_product_info = [
         img:[
             img_id22,
             img_id23,
-            img_id24,
-        ]
-    }
+        ],
+        consumer : {
+            name : "John Doe",
+            id: "test_id_1",
+            isVerified : true,
+        }
+    },
 ]

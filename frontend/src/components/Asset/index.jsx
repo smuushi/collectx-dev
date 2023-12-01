@@ -1,9 +1,17 @@
 import { findProductById } from "../../Utils"
 import { database_product_info } from "../../constants/testData/card";
+import ProductCard from "../ProductCard";
+import style from "../../style.module.scss"
 
-import { BsFillShareFill } from "react-icons/bs";
-import { motion } from "framer-motion";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { message } from "antd";
+import { HeartOutlined } from "@ant-design/icons";
+import { NavLink } from "react-router-dom";
+import { useSelector,useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Payment from "../Payment";
+
 
 function ProductTagPrinter({ data }) {
     return (
@@ -18,52 +26,79 @@ function ProductTagPrinter({ data }) {
     </div>
     );
 }
-const Carousel = ({img}) => {
-    const [ currentImg, setImg ] = useState(img[0]);
-
-    return(
-        <div className="w-full flex flex-col gap-10">
-            <img className="rounded-lg" src={currentImg} alt="img" />
-            <div className="grid grid-cols-4 gap-5 w-full ">
-                {img.map((img,index)=>(
-                    <div key={index} onClick={()=>setImg(img)}>
-                        <img className={`rounded-lg cursor-pointer ${img === currentImg ? "border border-indigo-600" : ""}`} src={img} alt="img" />
-                    </div>
-                ))}
-            </div>
-        </div>
 
 
-    )
-}
+
 
 const Assets = ({id}) =>{
-    let product = findProductById(id,database_product_info);
-    const btnBlue = "text-center p-3 rounded-lg text-white bg-blue-600 hover:bg-blue-700 cursor-pointer"
-    const btnWhite= "text-center p-3 rounded-lg text-blue-600 bg-slate-200 hover:bg-slate-300 cursor-pointer"
+    const product = findProductById(id,database_product_info);
+    const isAuthenticated = useSelector(state => state.auth.isLoggedIn);
+    const navigate = useNavigate();
+    const [showPayment,setShowPayment] = useState(false);
+
+    const buyItem = () => {
+        if(!isAuthenticated){
+            //message.info("Please login first")
+            navigate('/login')
+        }
+
+        setShowPayment(true);
+    }
+    const makeOffer = () =>{
+        if(!isAuthenticated){
+            message.info("Please login first")
+            navigate('/login')
+        }
+    }
+    const handleFavour = () =>{
+        if(!isAuthenticated){
+            message.info("Please login first")
+            navigate('/login')
+        }
+    }
+
     return(
         <div className="w-full flex justify-between sm:flex-row flex-col gap-20"> 
-            <div className="sm:w-1/2 w-full">
-                <Carousel img={product.img}/>
-            </div>
-
-            <div className="sm:w-1/2 w-full flex flex-col gap-5">
-                <div>Owned by <span className="text-indigo-300">0XDF3A...cCCf</span></div>
-                <div><p className={`font-extrabold text-2xl tracking-wide`}>{product.name}</p></div>
-                <div className="flex flex-wrap gap-8">
-                    <motion.div className={`${btnBlue} w-24 `} whileHover={{scale:1.02}} >Buy</motion.div>
-                    <motion.div className={`${btnBlue} w-36 `} whileHover={{scale:1.02}} >Make Offer </motion.div>
-                    <motion.div 
-                        className={`${btnWhite} w-36 flex justify-center items-center gap-2`}
-                        whileHover={{scale:1.05}}>
-                        <BsFillShareFill /> <span>Share</span>
-                    </motion.div>
-                </div>
-
-                <div className="mt-8 sm:mt-20">
-                    <ProductTagPrinter data={product} />
+            
+            <div>
+                <div className="w-full md:w-80 2xl:w-96">
+                    <ProductCard product={product} />
                 </div>
             </div>
+
+            <div className="w-full px-12 flex">
+                <div className="w-full flex flex-col gap-8">
+                    <p className="text-2xl font-bold">{product.name}</p>
+                    <p className="font-bold"><span className=" font-normal">Condition:</span> Excellent</p>
+                    <p className="">price: <span className="font-bold text-xl">C ${product.price.current}</span></p>
+                    <p>Owned by:&nbsp;
+                        <NavLink to={`/guest-profile/${product.consumer.id}`} className="text-blue-500 hover:underline">
+                            {product.consumer.name}
+                        </NavLink>
+                    </p>
+                    <div className="mt-8 sm:mt-12">
+                        <ProductTagPrinter data={product} />
+                    </div>
+                    <div className="flex flex-col md:flex-row gap-5">
+                        <motion.button 
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={buyItem}
+                            className="w-full md:w-32 h-12 bg-white text-black shadow-product px-5 py-2 rounded-md">Buy</motion.button>
+                        <motion.button 
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="w-full md:w-32 h-12 bg-white text-black shadow-product px-5 py-2 rounded-md">Make offer</motion.button>
+                        <motion.button 
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={handleFavour}
+                            className="w-full md:w-32 h-12 bg-white text-black shadow-product px-5 py-2 rounded-md"><HeartOutlined className="text-xl"/></motion.button>
+                    </div>
+                </div>
+            </div>
+
+            {showPayment && <Payment setShowPayment={setShowPayment} product={product}/>}
         </div>
     )
 }

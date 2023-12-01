@@ -5,7 +5,7 @@ const usersReducer = (state = initialState, action) => {
         case 'SET_USERS':
             const newUsersState = {};
 
-            console.log(action.payload.results)
+            // console.log(action.payload.results)
 
             action.payload.results.forEach(user => {
                 newUsersState[user.id] = user;

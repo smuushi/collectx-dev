@@ -9,7 +9,7 @@ const LoginPage = () => {
   const [ isLogin, setIsLogin ] = React.useState(true)
 
   return (
-    <div className='w-full h-screen flex justify-center items-center'>
+    <div className='w-full h-screen flex justify-center items-center mt-40 md:mt-0 '>
       <div className='relative w-full h-[800px] lg:w-[640px] xl:w-[800px] 2xl:w-[1000px] '>
         {
           isLogin && 

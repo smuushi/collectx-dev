@@ -1,6 +1,5 @@
 import img_id1 from "./product_img/nft_image_1.jpg";
 import img_id2 from "./product_img/nft_image_2.jpg";
-import img_id3 from "./product_img/nft_image_3.jpeg";
 import img_id4 from "./product_img/nft_image_4.jpg";
 import img_id5 from "./product_img/nft_image_5.jpg";
 import img_id6 from "./product_img/nft_image_6.jpg";
@@ -30,7 +29,6 @@ import pic2 from './advertisement/pic2.png';
 export {
     img_id1,
     img_id2,
-    img_id3,
     img_id4,
     img_id5,
     img_id6,

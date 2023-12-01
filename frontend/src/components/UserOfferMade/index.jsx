@@ -2,10 +2,10 @@ import React from 'react'
 
 const Offer = ({ offer }) => {
   return (
-    <div className='w-full flex flex-col gap-5 px-12'>
+    <div className='w-full flex flex-col gap-5 px-3 md:px-12'>
       <div className='w-full flex justify-between items-center'>
         <div className='flex gap-5'>
-          <div className='w-64 '>
+          <div className='w-32 md:w-64 '>
             <img src={offer.image} alt={offer.name} className='w-full h-full object-contain' />
           </div>
           <div className='flex flex-col gap-2 justify-center'>

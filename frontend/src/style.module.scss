@@ -24,6 +24,11 @@ $font-family : 'Courier New', Courier, monospace;
     }
 }
 
+.outsideBorder{
+    
+    border-style: outset;
+}
+
 .grid{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -63,4 +68,13 @@ $font-family : 'Courier New', Courier, monospace;
         box-sizing: border-box;
         width: 50px;
     }
+}
+
+.glassmorphism{
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.1px);
+    -webkit-backdrop-filter: blur(4.1px);
+    border: 1px solid rgba(255, 255, 255, 1);
 }

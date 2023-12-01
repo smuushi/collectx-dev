@@ -81,7 +81,7 @@ const FilterBar = ({filter,setFilter, setTags}) => {
     }
 
     return (
-    <div className='w-[350px]'>
+    <div className='w-[350px] hidden md:block'>
         <Space direction='vertical' size='middle' className='w-full p-5'>
             <div className='text-xl font-bold'>Filter</div>
             {filter.map((item, index) => (

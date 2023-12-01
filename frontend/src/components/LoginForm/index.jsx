@@ -32,6 +32,7 @@ const Login = ({setIsLogin}) => {
   const handleSignIn = async (e) => {
     e.preventDefault();
     const data = await dispatch(signIn(userInfo))
+    //const data = fakeLogin()
 
 
     data ? message.success("Login success") : message.error("Incorrect login")

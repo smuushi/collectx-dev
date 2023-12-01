@@ -23,9 +23,9 @@ const CarouselComponent = () => {
   ]
   
   return (
-    <div className="hidden md:flex">
+    <div className="flex pt-32">
 
-      <div className='h-auto md:h-[700px] 2xl:h-[1000px] flex items-center'>
+      <div className='h-80 md:h-[700px] 2xl:h-[1000px] flex items-center'>
         <div className='mt-[-100px] flex flex-col gap-10 w-full'>
           <h1 className='text-white text-4xl font-bold'>Finding your Extreme card here</h1>
           <div className='w-full h-16'>
@@ -61,7 +61,7 @@ const CarouselComponent = () => {
         }}>
           
         <div>
-            <div className=" bg-green h-auto md:h-[700px] 2xl:h-[1000px] flex justify-end items-center md:px-64 3xl:px-96">
+            <div className=" bg-green h-96 md:h-[700px] 2xl:h-[1000px] flex justify-end items-center md:px-64 3xl:px-96">
               <motion.div
                 className='w-96 hidden md:flex'
                 initial={{ x: 0 }}
@@ -77,12 +77,12 @@ const CarouselComponent = () => {
               </motion.div>
             </div>
         </div>
-
+{/* 
         <div>
             <div className=" bg-accent h-auto md:h-[700px] 2xl:h-[1000px] flex justify-end items-center px-96">
               
             </div>
-        </div>
+        </div> */}
       </Carousel>
     </div>
   )
@@ -110,7 +110,7 @@ const ProductList = ({name,list}) =>{
 
   const MobileList = ({list}) =>(
       <div className="block md:hidden">
-          <div className="px-[20px] pb-[20px] flex flex-row items-center flex-nowrap gap-[20px] overflow-scroll">
+          <div className="px-[20px] pb-[20px] flex flex-row items-center flex-nowrap gap-[30px] overflow-scroll">
               {list.map((product,index) => <MobileCard key={index} id={product.id} productName={product.name} productImg={product.img} category={product.tag.Category}/>)}
           </div>
       </div>
@@ -123,7 +123,7 @@ const ProductList = ({name,list}) =>{
       <div className="hidden md:block">
           <div className="flex flex-wrap justify-start gap-3 md:gap-8 2xl:gap-16">
               {list.map((product,index) => 
-                <div key={index} className="w-24 md:w-64 2xl:w-96">
+                <div key={index} className="w-24 md:w-64 2xl:w-80">
                   <ProductCard product={product}/>
                 </div>
               )}
@@ -132,7 +132,7 @@ const ProductList = ({name,list}) =>{
   )
 
   return(
-      <div className="relative h-[250px] sm:h-[500px] md:h-auto sm:mb-24 mb-12">
+      <div className="relative h-[350px] sm:h-[500px] md:h-auto sm:mb-24 mb-12">
           <div className="absolute md:relative h-auto w-screen md:w-full top-0 left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 flex flex-col gap-7">
           <div className='flex gap-5 md:gap-16 items-center'>
             <h1 className='px-6 md:px-0 font-bold text-md md:text-xl'>{name}</h1>
@@ -159,18 +159,13 @@ const MainPage = () => {
   const dispatch = useDispatch(); 
   dispatch(fetchCards())
   const cardStatus = useSelector(state => state.cards.status)
-  console.log(cardStatus)
   
 
   return (
     <div className={`relative h-auto w-full ${pageSettings.padding} flex flex-col gap-16`}>
         <CarouselComponent />
-
         <ProductList name="Recently Viewed & More " list={database_product_info.slice(0, 5)} />
         <ProductList name="You might interest..." list={database_product_info.slice(6, 13)} />
-        <div className='w-full bg-[#FAF1E4] scroll-py-16'>
-          test
-        </div>
     </div>
 
 

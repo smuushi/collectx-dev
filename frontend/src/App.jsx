@@ -14,6 +14,7 @@ import {
   SearchResult,
   UserProfilePage,
   UserProfileViewer,
+  GuestProfilePage,
   NoFound404,
 } from './pages';
 
@@ -75,6 +76,7 @@ function App() {
             <Route path='/search' element={<SearchResult />} />
             <Route path='/my-profile/*' element={<UserProfilePage />} />
             <Route path='/profile/:userId/*' element={<UserProfileViewer />} />
+            <Route path='/guest-profile/:id/*' element={<GuestProfilePage />} />
             <Route path='/asset/:id' element={<AssetPage />} />
             <Route path='/filter' element={<FilterPage />} />
             <Route path='*' element={<NoFound404 />} />
