@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-const CreditCard = () => {
+const CreditCard = ({price}) => {
     return(
         <div className='w-full flex flex-col'>
             <div className="mb-4">
@@ -11,16 +11,19 @@ const CreditCard = () => {
                     <div className="text-center">or use card</div>
                 </div>
             
-                <div className="flex flex-col gap-5 items-center mb-4">
-                    {/* 用户信息输入 */}
-                    <input type="text" placeholder="姓名" className="border-2 border-gray-200 rounded-lg p-2 mr-2 flex-grow" />
-                    <input type="text" placeholder="卡号" className="border-2 border-gray-200 rounded-lg p-2 flex-grow" />
-                </div>
+                <form className='py-4 w-full relative flex gap-5 flex-col'>
+                    <input className='w-full h-10 border border-gray-300 rounded-md px-2' type='text' placeholder='Card Number'/>  
+                    <input className='w-full h-10 border border-gray-300 rounded-md px-2' type='text' placeholder='Card Holder'/>
+                    <div className='w-full flex justify-between gap-10'>
+                        <input className='w-1/2 h-10 border border-gray-300 rounded-md px-2' type='text' placeholder='MM/YY'/>
+                        <input className='w-1/2 h-10 border border-gray-300 rounded-md px-2' type='text' placeholder='CVC'/>
+                    </div>
+                </form>
             
                 <div className="mb-4">
                     {/* 价格信息 */}
-                    <button className="w-full bg-blue-600 py-3 rounded-lg text-white">立即支付 $25.75</button>
-                    <p className="text-xs text-center text-gray-500 mt-2">购买这 Paper 的服务条款，推荐您在正式购买不久阅读这份条款。</p>
+                    <button className="w-full bg-blue-600 py-3 rounded-lg text-white">Pay ${price}</button>
+                    <p className="text-xs text-center text-gray-500 mt-2">Please review the terms of service for purchasing this paper, and we recommend doing so shortly before making a formal purchase.</p>
                 </div>
             
                 <div className="text-center text-gray-400 text-xs">
@@ -45,9 +48,8 @@ const Payment = ({setShowPayment,product}) => {
 
     const [paymentMethod, setPaymentMethod] = useState('creditCard');
     const {img,name, price} = product;
-    console.log(name)
     return(
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center mt-16 md:mt-0">
             <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm mx-auto">
                 <div className="text-right">
                     <button className="text-gray-400 hover:text-gray-600" onClick={() => setShowPayment(false)}>&times;</button>
@@ -83,7 +85,7 @@ const Payment = ({setShowPayment,product}) => {
                     <p className="text-xs text-gray-500 mb-2">An additional processing fee is applied for credit card payments.</p>
                 </div>
             
-                {paymentMethod === 'creditCard' && <CreditCard />}
+                {paymentMethod === 'creditCard' && <CreditCard price={price.current}/>}
                 {paymentMethod === 'paypal' && <PayPal />}
 
             </div>

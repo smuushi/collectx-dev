@@ -12,7 +12,6 @@ import { NavLink,useLocation } from 'react-router-dom';
 import { Drawer, message } from 'antd';
 import { AiFillSetting,AiOutlineHeart,AiOutlineMenu,AiOutlineLogin } from "react-icons/ai";
 import { GiCardBurn } from "react-icons/gi"
-import { BsPersonVcard } from "react-icons/bs"
 import { FiLogOut } from "react-icons/fi"
 import { StockOutlined,MessageOutlined } from "@ant-design/icons";
 

@@ -13,6 +13,31 @@ import 'swiper/css/effect-cards';
 // import required modules
 import { EffectCards } from 'swiper/modules';
 
+const SwpierCard = ({cardList}) => {
+
+  return (
+    <Swiper
+      effect={'cards'}
+      grabCursor={true}
+      modules={[EffectCards]}
+      className="w-64"
+    >
+      {cardList.map((card, index) =>{
+        return(
+          <SwiperSlide key={index}>
+            <NavLink
+              to={`/asset/${card.id}`}
+              className='w-64'>
+              <img src={card.img[0]} alt={`Card ${index}`} />
+            </NavLink>
+          </SwiperSlide>
+        )
+      })}
+    </Swiper>
+    )
+
+}
+
 const UserOwnCard = () => {
   const owncard = resultData;
   
@@ -30,28 +55,14 @@ const UserOwnCard = () => {
             ))}
           </div>
 
-          <div className='flex md:hidden justify-center'>
-                <Swiper
-                  effect={'cards'}
-                  grabCursor={true}
-                  modules={[EffectCards]}
-                  className="w-64"
-                >
-                  {
-                    owncard.map((card, index) =>{
-                      return(
-                        <SwiperSlide key={index}>
-                          <NavLink
-                            to={`/asset/${card.id}`}
-                            className='w-64'>
-                            <img src={card.img[0]} alt={`Card ${index}`} />
-                          </NavLink>
-                        </SwiperSlide>
-                      )
-                    })
-                  }
-              </Swiper>
+          <div className='flex flex-wrap gap-x-6 gap-y-9 items-center md:hidden justify-center'>
+            <SwpierCard cardList={owncard} />
+          {/* {owncard.map((item, index) => (
+              <div key={index} className="w-40">
+                <ProductCard product={item} />
               </div>
+            ))} */}
+          </div>
         
         </>
       ) : (

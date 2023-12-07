@@ -60,10 +60,7 @@ const UserProfilePage = () => {
           </div>
           <p className="text-four">Joined 2022 ( User infomation )</p>
           <div>
-          <Tag 
-            icon={<CheckCircleOutlined />} 
-            color="#4CAF50"
-          >
+          <Tag icon={<CheckCircleOutlined />} color="#4CAF50">
             Verified Store
           </Tag>
           </div>

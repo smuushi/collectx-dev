@@ -22,7 +22,7 @@ import {
     img_id22,
     img_id23,
     img_id24,
-
+    img_id25,
 } from "../../assets"
 
 export const resultData = [
@@ -451,6 +451,32 @@ export const database_product_info = [
         img:[
             img_id22,
             img_id23,
+        ],
+        consumer : {
+            name : "John Doe",
+            id: "test_id_1",
+            isVerified : true,
+        }
+    },
+    {
+        id : "12",
+        name : "1987 A Question of Sport Mike Tyson - UK (PSA 9 MINT)",
+        tag: {
+            Category : "Boxing cards",
+            Set : "AW Sports"
+        },
+        price: {
+            current : "1.28",
+        },
+        details :{
+            standard : "ERC-721 token on the blockchain",
+            chain : "polygon",
+            contact_address : "0xd4ac...dcAD",
+            token_id : "543136...0168"
+        },
+        img:[
+            img_id24,
+            img_id25,
         ],
         consumer : {
             name : "John Doe",
