@@ -1,9 +1,11 @@
+//Router
 import { 
   Route, 
   Routes,
   useLocation
 } from 'react-router-dom'
 
+//Pages
 import {
   AboutPage,
   AssetPage,
@@ -18,18 +20,22 @@ import {
   NoFound404,
 } from './pages';
 
+//Components
 import{
   Header,
   Footer,
 } from './components';
 
+//scroll to top function
 import { useEffect,useLayoutEffect } from 'react';
+
+//fetch cards and users
 import { useDispatch } from 'react-redux';
 import { fetchUsers } from './redux_store/actions/usersActions';
 import { checkAuthentication, signOut } from './redux_store/actions/authActions'; // Adjust the path accordingly
 import { fetchCards } from './redux_store/actions/cardActions';
 
-
+//scroll to top function
 function ScrollToTop() {
   const location = useLocation();
 
@@ -41,6 +47,7 @@ function ScrollToTop() {
   // Return null as this component doesn't render anything
   return null;
 }
+
 
 function App() {
 

@@ -266,7 +266,7 @@ const DesktopHeader = () => {
   //If we are on the home page
   if(currentPath === '/'){
     return(
-      <header className={`z-10 fixed top-0 left-0 w-full py-7 hidden md:flex flex-col duration-500 ${headerStyle}`} >
+      <header className={`z-10 fixed top-0 left-0 w-full py-5 2xl:py-7 hidden md:flex flex-col duration-500 ${headerStyle}`} >
         <div className={` ${pageSettings.padding} w-full flex items-center justify-between gap-10`}>
           <LOGO/>
           {showSearch && (
@@ -281,7 +281,6 @@ const DesktopHeader = () => {
             exit={{ opacity: 0 , y:-25 }}
             transition={{ ease: 'linear'}}
             className='w-full mt-5'>
-          
             <hr />
             <div className={`${pageSettings.padding} mt-5 flex justify-around `}>
               {category.map((cat,index) => (

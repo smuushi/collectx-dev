@@ -38,11 +38,10 @@ export const resultData = [
             Serial : "0008276475",
             Grade : "8.5 NM-MT+",
             Subject: "Lebron James"
-
         },
-        price: {
-            current : "1.28",
-        },
+        price: [
+            "1.28"
+        ],
         details :{
             standard : "ERC-721 token on the blockchain",
             chain : "ethereum",

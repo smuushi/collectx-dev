@@ -1,19 +1,55 @@
+//Style
 import { pageSettings } from './../../constants/style';
-import { database_product_info } from "../../constants"
 import style from '../../style.module.scss'
-import { img_id23 } from '../../assets';
-import { ProductCard,SearchBar } from '../../components';
-import { fetchCards } from '../../redux_store/actions/cardActions';
 
-import { motion } from 'framer-motion';
-import { Carousel,Space } from 'antd';
-import {ArrowRightOutlined } from '@ant-design/icons';
-import { NavLink } from 'react-router-dom';
+//Simulation Data
+import { database_product_info } from "../../constants"
 import { 
-  useDispatch,
-  useSelector,
-} from 'react-redux';
+  pic1,pic3,pic5, //pokemon
+  pic11,pic13,pic15, //basketball
+  pic31,pic33,pic35, pic2, //baseball
+} from '../../assets';
 
+//Components
+import { ProductCard,SearchBar } from '../../components';
+
+//Redux
+import { fetchCards } from '../../redux_store/actions/cardActions';
+import { useDispatch, useSelector } from 'react-redux';
+
+//Framer Motion
+import { motion } from 'framer-motion';
+
+//Antd
+import { Carousel } from 'antd';
+import {ArrowRightOutlined } from '@ant-design/icons';
+
+//React Router
+import { NavLink } from 'react-router-dom';
+
+const CarouselCard = ({ color, img1, img2, img3}) => {
+
+  return(
+    <div className={`relative bg-${color} h-96 md:h-[700px] 2xl:h-[1000px] `}>
+      <div className='relative h-full w-full border flex justify-end py-7'>
+        <motion.div
+            className='absolute right-32 w-80 hidden md:flex '>
+          <motion.img src={img1} alt="img" className="origin-bottom-left rotate-0 object-contain scale-75 " />
+        </motion.div>
+
+        <motion.div
+            className='absolute right-32 w-80 hidden md:flex '>
+          <motion.img src={img2} alt="img" className="origin-bottom-left rotate-6 object-contain scale-75" />
+        </motion.div>
+
+        <motion.div
+            className='absolute right-32 w-80 hidden md:flex'>
+          <motion.img src={img3} alt="img" className="origin-bottom-left rotate-12 object-contain scale-75" />
+        </motion.div>
+      </div>
+    </div>
+  )
+}
 
 const CarouselComponent = () => {
   const tag = [
@@ -24,11 +60,13 @@ const CarouselComponent = () => {
   
   return (
     <div className="flex pt-32">
-
-      <div className='h-80 md:h-[700px] 2xl:h-[1000px] flex items-center'>
-        <div className='mt-[-100px] flex flex-col gap-10 w-full'>
-          <h1 className='text-white text-4xl font-bold'>Finding your Extreme card here</h1>
-          <div className='w-full h-16'>
+      <div className='h-80 md:h-[700px] 2xl:h-[1000px] flex items-center '>
+        <div className='mt-[-300px] flex flex-col gap-7 w-full'>
+          <div>
+            <h1 className='text-white text-5xl font-bold '>Digitize your cards</h1>
+            <h1 className='text-white text-5xl font-bold '>Trade them cheap & fast</h1>  
+          </div>
+          <div className='w-[600px] h-16'>
             <SearchBar color="text-white"/>
           </div>
           <div className='hidden md:flex gap-5'>
@@ -61,28 +99,15 @@ const CarouselComponent = () => {
         }}>
           
         <div>
-            <div className=" bg-green h-96 md:h-[700px] 2xl:h-[1000px] flex justify-end items-center md:px-64 3xl:px-96">
-              <motion.div
-                className='w-96 hidden md:flex'
-                initial={{ x: 0 }}
-                animate={{ 
-                    x:0,
-                    rotateY: 360 
-                  }}
-                transition={{
-                    duration: 2, 
-                    repeat: 1, 
-                  }}>
-                <motion.img src={img_id23} alt="img" className="rotate-12 object-contain scale-75" />
-              </motion.div>
-            </div>
+          <CarouselCard color="green" img1={pic3} img2={pic2} img3={pic1} />
         </div>
-{/* 
+
         <div>
-            <div className=" bg-accent h-auto md:h-[700px] 2xl:h-[1000px] flex justify-end items-center px-96">
-              
-            </div>
-        </div> */}
+          <CarouselCard color="accent" img1={pic15} img2={pic13} img3={pic11} />
+        </div>
+        <div>
+          <CarouselCard color="green" img1={pic35} img2={pic33} img3={pic31} />
+        </div>
       </Carousel>
     </div>
   )
